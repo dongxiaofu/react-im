@@ -91,6 +91,7 @@ export default class Movies extends Component {
                     renderItem={Item}
                     keyExtractor={item => item.id}
                 />
+                <Button title="Go to Home" onPress={() => this.props.nav.navigate('Settings')}/>
             </SafeAreaView>
         );
     };

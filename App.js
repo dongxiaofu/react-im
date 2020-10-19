@@ -33,25 +33,30 @@ function test() {
 }
 
 function App() {
-    // const Tab = createBottomTabNavigator();
     return (
-    //
-    // <NavigationContainer>
-    //     <Tab.Navigator>
-    //         <Tab.Screen name="Home" component={this.HomeScreen} />
-    //         <Tab.Screen name="Settings" component={this.SettingsScreen} />
-    //     </Tab.Navigator>
-    // </NavigationContainer>
-        <Home/>
-        // <NavigationContainer>
-        //     <Stack.Navigator initialRouteName="Home">
-        //         {/*<Stack.Screen.component Home={Home}/>*/}
-        //         <Stack.Screen name="Details" component={test} />
-        //         {/*<Home />*/}
-        //     </Stack.Navigator>
-        //     {/*this.MyTabs()*/}
-        // </NavigationContainer>
+        <NavigationContainer>
+            <Home/>
+        </NavigationContainer>
     );
+    // // const Tab = createBottomTabNavigator();
+    // return (
+    // //
+    // // <NavigationContainer>
+    // //     {/*<Tab.Navigator>*/}
+    // //     {/*    <Tab.Screen name="Home" component={this.HomeScreen} />*/}
+    // //     {/*    <Tab.Screen name="Settings" component={this.SettingsScreen} />*/}
+    // //     {/*</Tab.Navigator>*/}
+    // //     <Home />
+    // // </NavigationContainer>
+    //     // <NavigationContainer>
+    //     //     <Stack.Navigator initialRouteName="Home">
+    //     //         {/*<Stack.Screen.component Home={Home}/>*/}
+    //     //         <Stack.Screen name="Details" component={test} />
+    //     //         {/*<Home />*/}
+    //     //     </Stack.Navigator>
+    //     //     {/*this.MyTabs()*/}
+    //     // </NavigationContainer>
+    // );
 }
 
 export default App;

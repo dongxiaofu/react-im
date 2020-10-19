@@ -14,7 +14,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Component} from 'react';
-import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
+// import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
 
 import Detail from './Detail';
 import Movies from './Movies';
@@ -44,27 +44,42 @@ class Home extends Component {
 
     test = () => {
         return (
-            <Detail />
+            <Detail/>
         );
-    }
+    };
 
-     HomeScreen() {
+    HomeScreen({navigation}) {
         return (
-            <Movies />
+            <Movies nav = {navigation}/>
+
         );
         // return (
         //     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        //         <Text>Home!</Text>
+        //         <Text>Home screen</Text>
+        //         <Button
+        //             title="Go to Details"
+        //             onPress={() => navigation.push('Settings')}
+        //         />
         //     </View>
         // );
     }
 
-     SettingsScreen() {
+    SettingsStackScreen({navigation}) {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <Text>Settings!</Text>
+                <Button title="Go to Home" onPress={() => navigation.navigate('Home')}/>
             </View>
         );
+
+        //
+        // const SettingsStack = createStackNavigator();
+        // return (
+        //     <SettingsStack.Navigator>
+        //         {/*<SettingsStack.Screen name="Settings" component={this.SettingsScreen} />*/}
+        //         <SettingsStack.Screen name="Details" component={this.HomeScreen} />
+        //     </SettingsStack.Navigator>
+        // );
     }
 
 
@@ -81,17 +96,14 @@ class Home extends Component {
     // };
 
     render() {
-        const Stack = createStackNavigator();
+        const Tab = createBottomTabNavigator();
         return (
-            <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name="Home" component={this.HomeScreen} />
-                    <Stack.Screen name="Detail" component={this.HomeScreen} />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Home" options={{title: 'Overview'}} component={this.HomeScreen}/>
+                <Tab.Screen name="Settings" component={this.SettingsStackScreen}/>
+            </Tab.Navigator>
         );
     };
-
 
 
 }
