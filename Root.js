@@ -14,20 +14,24 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Component} from 'react';
-import Home from './Home';
+// import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
+
+import Detail from './Detail';
+import MovieDetail from './MovieDetail';
+import Movies from './Movies';
+
+
+// const Stack = createStackNavigator;
+// const Tab = createBottomTabNavigator;
 
 type Props = {
     current: number;
     count: number;
     navigator: any;
-    Tab:any;
+    Tab: any;
 };
 
-
-// const Tab = createBottomTabNavigator;
-
 class Root extends Component {
-
     constructor(props: Props) {
         super(props);
 
@@ -37,70 +41,81 @@ class Root extends Component {
         this.state = {
             listData: [],
         };
-        this.title = this.props.title;
-        this.url = this.props.url;
     }
 
-    HomScreen(){
-        return <Text>Hello, I am your cat!</Text>;
+    test = () => {
+        return (
+            <Detail/>
+        );
+    };
+
+    HomeScreen({navigation}) {
+        return (
+            <Movies nav={navigation}/>
+
+        );
+        // return (
+        //     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        //         <Text>Home screen</Text>
+        //         <Button
+        //             title="Go to Details"
+        //             onPress={() => navigation.push('Settings')}
+        //         />
+        //     </View>
+        // );
     }
+
+    SettingsStackScreen({navigation}) {
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>Settings!</Text>
+                <Button title="Go to Home" onPress={() => navigation.navigate('Home')}/>
+            </View>
+        );
+
+        //
+        // const SettingsStack = createStackNavigator();
+        // return (
+        //     <SettingsStack.Navigator>
+        //         {/*<SettingsStack.Screen name="Settings" component={this.SettingsScreen} />*/}
+        //         <SettingsStack.Screen name="Details" component={this.HomeScreen} />
+        //     </SettingsStack.Navigator>
+        // );
+    }
+
 
     // render() {
-    //     return <Text>Hello, I am your cat!=========</Text>;
-    // }
+    //     const Tab = createBottomTabNavigator();
+    //     return (
+    //         <NavigationContainer>
+    //             <Tab.Navigator>
+    //                 <Tab.Screen name="Home" component={this.HomeScreen} />
+    //                 <Tab.Screen name="Settings" component={this.SettingsScreen} />
+    //             </Tab.Navigator>
+    //         </NavigationContainer>
+    //     );
+    // };
 
-    render() {
-        const Stack = createStackNavigator;
+    MovieDetailScreen({navigation}) {
         return (
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
-                    {/*<Stack.Screen.component Home={Home}/>*/}
-                    <Stack.Screen name="Details"><Home /></Stack.Screen>
-                    {/*<Home />*/}
-                </Stack.Navigator>
-            {/*this.MyTabs()*/}
-            </NavigationContainer>
+            <MovieDetail/>
         );
     }
+
+    render() {
+        const Stack = createStackNavigator();
+        const Tab = createBottomTabNavigator();
+        return (
+            // <Stack.Navigator>
+                <Tab.Screen name="Movie" component={this.MovieDetailScreen}/>
+            // </Stack.Navigator>
+
+            // <Stack.Navigator initialRouteName="Home">
+            // <Stack.Navigator>
+            //     <Stack.Screen name="Detail" component={this.MovieDetailScreen}/>
+
+        );
+    };
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-        // flex: 1,
-        flexDirection: 'row',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-        paddingTop: 10,
-        // paddingBottom: 20,
-    },
-    rightContainer: {
-        flex: 1,
-        marginLeft: 20,
-        borderBottomWidth: 1,
-    },
-    title: {
-        fontSize: 20,
-        marginBottom: 8,
-        textAlign: 'left',
-    },
-    year: {
-        textAlign: 'left',
-    },
-    date: {
-        position: 'absolute',
-        top: 10,
-        right: 15,
-    },
-    thumbnail: {
-        width: 60,
-        height: 60,
-    },
-    list: {
-        paddingTop: 20,
-        backgroundColor: '#F5FCFF',
-    },
-});
 
 export default Root;

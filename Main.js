@@ -19,6 +19,7 @@ import {Component} from 'react';
 import Detail from './Detail';
 import Movies from './Movies';
 import MovieDetail from './MovieDetail';
+import Home from './Home';
 
 
 // const Stack = createStackNavigator;
@@ -31,12 +32,9 @@ type Props = {
     Tab: any;
 };
 
-class Home extends Component {
+class Main extends Component {
     constructor(props: Props) {
         super(props);
-
-        // (this: any).navigateToSettings = this.navigateToSettings.bind(this);
-        // (this: any).navigateToLocations = this.navigateToLocations.bind(this);
 
         this.state = {
             listData: [],
@@ -105,19 +103,14 @@ class Home extends Component {
     }
 
     render() {
-        const Tab = createBottomTabNavigator();
-        const Stack = createStackNavigator();
         return (
-            <Tab.Navigator>
-                <Tab.Screen name="Home" options={{title: 'Overview'}} component={this.HomeScreen}/>
-                <Tab.Screen name="Settings" component={this.SettingsStackScreen}/>
-                {/*<Stack.Screen name="Movie" component={MovieDetail} />*/}
-                {/*<Tab.Screen name="Root" component={this.Other} />*/}
-            </Tab.Navigator>
+            <NavigationContainer>
+                <Home />
+            </NavigationContainer>
         );
     };
 
 
 }
 
-export default Home;
+export default Main;
