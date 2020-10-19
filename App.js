@@ -1,28 +1,11 @@
 import * as React from 'react';
-import {Image, Text, View, SafeAreaView, FlatList, StyleSheet, StatusBar} from 'react-native';
+import {Image, Text, View, SafeAreaView, FlatList, StyleSheet, StatusBar, Button} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
 
-
-function HomeScreen() {
-    // const DATA = [
-    //     {
-    //         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    //         title: 'First Item',
-    //     },
-    //     {
-    //         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    //         title: 'Second Item',
-    //     },
-    //     {
-    //         id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    //         title: 'Third Item',
-    //     },
-    // ];
-    // const movie = DATA;
-
-
-    const DATA = [
+function MoviesScreen() {
+    const MOVIES = [
         {
             id: '1',
             title: '订阅号消息',
@@ -54,13 +37,6 @@ function HomeScreen() {
     ];
 
     const Item = ({item}) => (
-        // <View style={styles.item}>
-        //     <Text>{item.title}</Text>
-        //     <Text>{item.year}</Text>
-        //     <Image style={{width:100,height:100}} source={{uri: item.posters.thumbnail}}/>
-        //     {/*<Text style={styles.title}>{title}</Text>*/}
-        // </View>
-
         <View style={styles.container}>
             <Image
                 source={{uri: item.posters.thumbnail}}
@@ -78,7 +54,7 @@ function HomeScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
-                data={DATA}
+                data={MOVIES}
                 renderItem={Item}
                 keyExtractor={item => item.id}
             />
@@ -86,11 +62,21 @@ function HomeScreen() {
     );
 }
 
+function HomeScreen() {
+    return (
+        <Stack.Navigator initialRouteName="Movies">
+            <Stack.Screen name="Movies" component={MoviesScreen}/>
+            <Stack.Screen name="Details" component={DetailsScreen}/>
+        </Stack.Navigator>
+    );
+}
+
 function SettingsScreen() {
     return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Settings!</Text>
-        </View>
+    <Stack.Navigator initialRouteName="Movies">
+        {/*<Stack.Screen name="Movies" component={MoviesScreen}/>*/}
+        <Stack.Screen name="Details" component={DetailsScreen}/>
+    </Stack.Navigator>
     );
 }
 
@@ -116,9 +102,28 @@ function MyTabs() {
     );
 }
 
+
+function DetailsScreen({navigation}) {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Text>Details Screen===========</Text>
+            <Button
+                title="Go to Details... again"
+                onPress={() => navigation.push('Details')}
+            />
+        </View>
+    );
+}
+
+const Stack = createStackNavigator();
+
 export default function App() {
     return (
         <NavigationContainer>
+            {/*<Stack.Navigator initialRouteName="Home">*/}
+            {/*    <Stack.Screen name="Home" component={HomeScreen}/>*/}
+            {/*    <Stack.Screen name="Details" component={DetailsScreen}/>*/}
+            {/*</Stack.Navigator>*/}
             <MyTabs/>
         </NavigationContainer>
     );
