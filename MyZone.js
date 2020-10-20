@@ -19,6 +19,9 @@ import {Component} from 'react';
 import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
 // 导入路由的组件
 import {Actions} from 'react-native-router-flux';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/FontAwesome';
 
 const {height, width} = Dimensions.get('window');
 type Props = {
@@ -40,22 +43,8 @@ export default class MyZone extends Component {
         };
     }
 
-    // js 为什么计算结果老是出现NaN
-    // 可能原因：
-    // 1、操作的两个数，类型不一致
-    // 2、有一个值为NaN，计算後为NaN
     _pressRow(rowID) {
-        // this.props.nav.navigate('Movie');
-        // this.props.nav.navigate('Root', { screen: 'Movie' });
-        console.log(rowID);
-        let rowId = parseInt(rowID);
-        console.log(rowId % 2);
-        if (rowId % 2 == 0) {
-
-            Actions.moviedetail(rowId);
-        } else {
-            Actions.chat(rowId);
-        }
+        Actions.blogcover(rowID);
     }
 
     _header() {

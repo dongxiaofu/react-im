@@ -216,4 +216,11 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
+// 进入android/app/build.gradle文件，添加如下内容：
+
+project.ext.vectoricons = [
+    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ]
+]
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
