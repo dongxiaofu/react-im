@@ -16,6 +16,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {PureComponent} from 'react';
 import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
+import {Actions} from 'react-native-router-flux';
 
 
 type Props = {
@@ -41,15 +42,25 @@ export default class UserHome extends PureComponent {
 
     }
 
+    _pressRow(userID) {
+        console.log(userID)
+        let userIdInt = parseInt(userID)
+        console.log(userID)
+        Actions.chat(userIdInt);
+    }
+
     render() {
 
         const USER = {
+            uerId:5,
             gender: '',
             name: 'Web开发',
             ID: 'gganghong',
             area: '阿拉伯联合酋长国 乌姆盖万',
             avatar: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
         };
+
+        let userId = USER.uerId;
 
         const ALBUMS = [
             {
@@ -104,7 +115,7 @@ export default class UserHome extends PureComponent {
                 </View>
                 <View style={sendBtn.container}>
                     <TouchableHighlight
-                        onPress={() => Alert.alert('Simple Button pressed')}
+                        onPress={() => this._pressRow({userId})}
                         underlayColor={frontendColor}
                     >
                         <Text style={sendBtn.btn}>发消息</Text>
