@@ -29,6 +29,8 @@ import MovieDetail from './MovieDetail';
 import {Router, Scene, Stack} from 'react-native-router-flux';
 import Movies from './Movies';
 import Main from './Main';
+import Chat from './Chat';
+import UserHome from './UserHome';
 
 // const Stack = createStackNavigator();
 
@@ -44,6 +46,8 @@ function App() {
                 {/* 电影列表的路由规则 */}
                 <Scene key="movielist" component={Movies} title="热映电影列表"/>
                 <Scene key="moviedetail" component={MovieDetail} title="梁山群"/>
+                <Scene key="chat" component={Chat} title="小王"/>
+                <Scene key="userhome" component={UserHome} title=""/>
             </Stack>
         </Router>);
 }

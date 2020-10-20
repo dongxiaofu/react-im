@@ -39,10 +39,23 @@ export default class Movies extends Component {
             listData: [],
         };
     }
-l
-    _pressRow(rowID: number) {
+
+    // js 为什么计算结果老是出现NaN
+    // 可能原因：
+    // 1、操作的两个数，类型不一致
+    // 2、有一个值为NaN，计算後为NaN
+    _pressRow(rowID) {
         // this.props.nav.navigate('Movie');
-        this.props.nav.navigate('Root', { screen: 'Movie' });
+        // this.props.nav.navigate('Root', { screen: 'Movie' });
+        console.log(rowID)
+        let rowId = parseInt(rowID)
+        console.log(rowId % 2)
+        if(rowId % 2 == 0){
+
+            Actions.moviedetail(rowId);
+        }else{
+            Actions.chat(rowId);
+        }
     }
 
 
@@ -79,7 +92,7 @@ l
         ];
 
         const Item = ({item}) => (
-            <TouchableHighlight onPress={() => Actions.moviedetail({id:item.id})}>
+            <TouchableHighlight onPress={() => this._pressRow(item.id)}>
                 <View style={styles.container}>
                     <Image
                         source={{uri: item.posters.thumbnail}}
@@ -101,7 +114,7 @@ l
                     renderItem={Item}
                     keyExtractor={item => item.id}
                 />
-                <Button title="Go to Home" onPress={() => this.props.nav.navigate('Settings')}/>
+                {/*<Button title="Go to Home" onPress={() => this.props.nav.navigate('Settings')}/>*/}
             </SafeAreaView>
         );
     };

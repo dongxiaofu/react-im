@@ -17,6 +17,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Component, useState} from 'react';
 import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
+import {Actions} from 'react-native-router-flux';
 
 const {height, width} = Dimensions.get('window');
 // var {width,height} = Dimensions.get('window');
@@ -28,13 +29,17 @@ type Props = {
     Tab: any;
 };
 
-export default class MovieDetail extends Component {
+export default class Chat extends Component {
     constructor(props: Props) {
         super(props);
 
         this.state = {
             listData: [],
         };
+    }
+
+    _pressRow(){
+        Actions.userhome();
     }
 
     render() {
@@ -100,10 +105,15 @@ export default class MovieDetail extends Component {
 
         const Item = ({item}) => (
             <View style={styles.container}>
-                <Image
-                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
-                    style={styles.thumbnail}
-                />
+                <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
+                    <Image
+                        onPress={() => {
+                            Actions.userhome();
+                        }}
+                        source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                        style={styles.thumbnail}
+                    />
+                </TouchableHighlight>
                 <View style={styles.rightContainer}>
                     <Text style={styles.name}>小王</Text>
                     <Text
@@ -126,7 +136,7 @@ export default class MovieDetail extends Component {
                 <View style={{
                     // padding: 10,
                     position: 'absolute',
-                    width:width,
+                    width: width,
                     bottom: 0,
                     left: 0,
                     // zIndex: 50,
@@ -187,12 +197,12 @@ const styles = StyleSheet.create({
 
     _input: {
         height: 50,
-        width: width*0.9,
+        width: width * 0.9,
         backgroundColor: '#F5FCFF',
         marginTop: 10,
         marginBottom: 10,
         marginLeft: 5,
-        marginRight:10,
+        marginRight: 10,
         /*  alignSelf:'center',*/
         justifyContent: 'center',
         alignItems: 'center',
