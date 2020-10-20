@@ -43,16 +43,23 @@ export default class UserHome extends PureComponent {
     }
 
     _pressRow(userID) {
-        console.log(userID)
-        let userIdInt = parseInt(userID)
-        console.log(userID)
+        console.log(userID);
+        let userIdInt = parseInt(userID);
+        console.log(userID);
         Actions.chat(userIdInt);
+    }
+
+    _goMyZone(userID) {
+        console.log(userID);
+        let userIdInt = parseInt(userID);
+        console.log(userID);
+        Actions.myzone(userIdInt);
     }
 
     render() {
 
         const USER = {
-            uerId:5,
+            uerId: 5,
             gender: '',
             name: 'Web开发',
             ID: 'gganghong',
@@ -103,16 +110,21 @@ export default class UserHome extends PureComponent {
                         </View>
                     </View>
                 </View>
-                <View style={friends.container}>
-                    <Text style={friends.label}>朋友圈</Text>
-                    <SafeAreaView style={album.container}>
-                        <FlatList horizontal={true}
-                                  data={ALBUMS}
-                                  renderItem={Item}
-                                  keyExtractor={item => item.id}
-                        />
-                    </SafeAreaView>
-                </View>
+                <TouchableHighlight
+                    onPress={() => this._goMyZone({userId})}
+                    underlayColor={frontendColor}
+                >
+                    <View style={friends.container}>
+                        <Text style={friends.label}>朋友圈</Text>
+                        <SafeAreaView style={album.container}>
+                            <FlatList horizontal={true}
+                                      data={ALBUMS}
+                                      renderItem={Item}
+                                      keyExtractor={item => item.id}
+                            />
+                        </SafeAreaView>
+                    </View>
+                </TouchableHighlight>
                 <View style={sendBtn.container}>
                     <TouchableHighlight
                         onPress={() => this._pressRow({userId})}
@@ -125,7 +137,6 @@ export default class UserHome extends PureComponent {
         );
     };
 }
-
 
 
 const profile = StyleSheet.create({

@@ -31,6 +31,7 @@ import Movies from './Movies';
 import Main from './Main';
 import Chat from './Chat';
 import UserHome from './UserHome';
+import MyZone from './MyZone';
 
 // const Stack = createStackNavigator();
 
@@ -48,6 +49,7 @@ function App() {
                 <Scene key="moviedetail" component={MovieDetail} title="梁山群"/>
                 <Scene key="chat" component={Chat} title="小王"/>
                 <Scene key="userhome" component={UserHome} title=""/>
+                <Scene key="myzone" component={MyZone} title="朋友圈主页"/>
             </Stack>
         </Router>);
 }
