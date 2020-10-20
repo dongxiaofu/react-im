@@ -8,6 +8,7 @@ import {
     Dimensions,
     ScrollView,
     FlatList,
+    TouchableHighlight
 } from 'react-native';
 
 //引用插件
@@ -17,6 +18,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/FontAwesome';
+import {Actions} from 'react-native-router-flux';
 
 // 取得屏幕的宽高Dimensions
 const {width, height} = Dimensions.get('window');
@@ -84,6 +86,11 @@ export default class recommend extends Component {
             );
         });
     }
+    // 去相册详情页
+    goDetail(){
+        Actions.blogdetail()
+    }
+
     // todo 评论、点赞
     render() {
         return (
@@ -102,6 +109,13 @@ export default class recommend extends Component {
                         色。深圳对外开放的成功，也让它成为国内诸多城市用来对标的“榜样”。在2020年10月19日出版的《学习时报》中，刊发了山东
                         省省长李干杰的文章《服务国家战略 奋力走在前列》。文中提到，支持青岛对标深圳特区实行全方位对外开放。
                     </Text>
+                    <View>
+                        <TouchableHighlight onPress={() => this.goDetail()}>
+                        <View>
+                            <Text style={wapper.comment_num}>29</Text>
+                        </View>
+                        </TouchableHighlight>
+                    </View>
                 </View>
             </View>
         );
@@ -142,15 +156,27 @@ const wapper = StyleSheet.create({
         bottom: 0,
         width: width,
         // height: 160,
-        height:'auto',
+        height: 'auto',
 
         backgroundColor: 'black',
-        opacity:0.7,
+        opacity: 0.7,
     },
     post_brief: {
         fontSize: 16,
         color: '#fff',
-        lineHeight:25,
-        paddingBottom:40,
+        lineHeight: 25,
+        paddingBottom: 40,
+    },
+    tool_bar: {
+        height:40,
+    },
+    tool_bar_right:{
+        position: 'absolute',
+        // right:0,
+    },
+    comment_num:{
+        fontSize: 16,
+        color: '#fff',
+        textAlign:'right'
     },
 });

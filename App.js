@@ -33,6 +33,7 @@ import Chat from './Chat';
 import UserHome from './UserHome';
 import MyZone from './MyZone';
 import BlogCover from './BlogCover';
+import BlogDetail from './BlogDetail';
 
 // const Stack = createStackNavigator();
 
@@ -53,6 +54,8 @@ function App() {
                 <Scene key="myzone" component={MyZone} title="朋友圈主页"/>
                 {/*相册封面*/}
                 <Scene key="blogcover" component={BlogCover} title="2019年9月15日 18:58"/>
+                {/*相册详情*/}
+                <Scene key="blogdetail" component={BlogDetail} title="详情"/>
             </Stack>
         </Router>);
 }
