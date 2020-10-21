@@ -19,6 +19,7 @@ import {Component} from 'react';
 import Detail from './Detail';
 import Movies from './Movies';
 import MovieDetail from './MovieDetail';
+import {Actions} from 'react-native-router-flux';
 
 
 // const Stack = createStackNavigator;
@@ -83,6 +84,24 @@ class Home extends Component {
         // );
     }
 
+    Register({navigation}) {
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>Settings!</Text>
+                <Button title="Go to Register" onPress={() => Actions.register()}/>
+            </View>
+        );
+
+        //
+        // const SettingsStack = createStackNavigator();
+        // return (
+        //     <SettingsStack.Navigator>
+        //         {/*<SettingsStack.Screen name="Settings" component={this.SettingsScreen} />*/}
+        //         <SettingsStack.Screen name="Details" component={this.HomeScreen} />
+        //     </SettingsStack.Navigator>
+        // );
+    }
+
 
     // render() {
     //     const Tab = createBottomTabNavigator();
@@ -111,6 +130,7 @@ class Home extends Component {
             <Tab.Navigator>
                 <Tab.Screen name="Home" options={{title: 'Overview'}} component={this.HomeScreen}/>
                 <Tab.Screen name="Settings" component={this.SettingsStackScreen}/>
+                <Tab.Screen name="Register" component={this.Register}/>
                 {/*<Stack.Screen name="Movie" component={MovieDetail} />*/}
                 {/*<Tab.Screen name="Root" component={this.Other} />*/}
             </Tab.Navigator>

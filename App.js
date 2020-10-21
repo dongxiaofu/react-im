@@ -34,6 +34,7 @@ import UserHome from './UserHome';
 import MyZone from './MyZone';
 import BlogCover from './BlogCover';
 import BlogDetail from './BlogDetail';
+import Register from './Register';
 
 // const Stack = createStackNavigator();
 
@@ -56,6 +57,10 @@ function App() {
                 <Scene key="blogcover" component={BlogCover} title="2019年9月15日 18:58"/>
                 {/*相册详情*/}
                 <Scene key="blogdetail" component={BlogDetail} title="详情"/>
+                {/*注册*/}
+                <Scene key="register" component={Register} title="注册"/>
+                {/*登录*/}
+                <Scene key="login" component={Login} title="登录"/>
             </Stack>
         </Router>);
 }
