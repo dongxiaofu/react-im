@@ -35,6 +35,7 @@ import MyZone from './MyZone';
 import BlogCover from './BlogCover';
 import BlogDetail from './BlogDetail';
 import Register from './Register';
+import Login from './Login';
 
 // const Stack = createStackNavigator();
 
