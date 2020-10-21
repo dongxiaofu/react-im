@@ -131,7 +131,9 @@ export default class Register extends Component {
                     </View>
                 </View>
                 <View style={styles.btn_container}>
-                    <Button title={'注册'}>注册</Button>
+                    <TouchableHighlight style={styles.login_btn}>
+                        <Text style={styles.login_btn_text}>注册</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
         );
@@ -191,7 +193,7 @@ const styles = StyleSheet.create({
     },
     ipt:{
         height:40,
-        width:width*0.7,
+        flex: 1,
         borderColor: 'gray',
         borderWidth: 1,
 
@@ -208,7 +210,7 @@ const styles = StyleSheet.create({
     },
     country: {
         height:40,
-        width:width*0.7,
+        flex: 1,
         color:'green',
 
         borderColor: 'gray',
@@ -221,6 +223,20 @@ const styles = StyleSheet.create({
     uploadAvatar:{
         width:60,
         height:60,
+    },
+    login_btn:{
+        padding: 12,
+        backgroundColor: '#DCDCDC',
+        borderColor: '#DCDCDC',
+        borderWidth: 1,
+        borderRadius: 5,
+    },
+    login_btn_text:{
+        textAlign:'center',
+        // height:50,
+        textAlignVertical:'center',
+        color: 'grey',
+        fontSize:16,
     },
 });
 

@@ -52,7 +52,7 @@ class Home extends Component {
 
     HomeScreen({navigation}) {
         return (
-            <Movies nav = {navigation}/>
+            <Movies nav={navigation}/>
 
         );
         // return (
@@ -84,22 +84,22 @@ class Home extends Component {
         // );
     }
 
-    Register({navigation}) {
+    Register({}) {
         return (
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <Text>Settings!</Text>
                 <Button title="Go to Register" onPress={() => Actions.register()}/>
             </View>
         );
+    }
 
-        //
-        // const SettingsStack = createStackNavigator();
-        // return (
-        //     <SettingsStack.Navigator>
-        //         {/*<SettingsStack.Screen name="Settings" component={this.SettingsScreen} />*/}
-        //         <SettingsStack.Screen name="Details" component={this.HomeScreen} />
-        //     </SettingsStack.Navigator>
-        // );
+    Login({}) {
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>Settings!</Text>
+                <Button title="Go to Login" onPress={() => Actions.login()}/>
+            </View>
+        );
     }
 
 
@@ -115,11 +115,11 @@ class Home extends Component {
     //     );
     // };
 
-    Other(){
+    Other() {
         const Stack = createStackNavigator();
-        return(<Stack.Navigator>
+        return (<Stack.Navigator>
             {/*<Stack.Screen name="Profile" component={this.HomeScreen} />*/}
-            <Stack.Screen name="Movie" component={MovieDetail} />
+            <Stack.Screen name="Movie" component={MovieDetail}/>
         </Stack.Navigator>);
     }
 
@@ -129,7 +129,7 @@ class Home extends Component {
         return (
             <Tab.Navigator>
                 <Tab.Screen name="Home" options={{title: 'Overview'}} component={this.HomeScreen}/>
-                <Tab.Screen name="Settings" component={this.SettingsStackScreen}/>
+                <Tab.Screen name="Login" component={this.Login}/>
                 <Tab.Screen name="Register" component={this.Register}/>
                 {/*<Stack.Screen name="Movie" component={MovieDetail} />*/}
                 {/*<Tab.Screen name="Root" component={this.Other} />*/}

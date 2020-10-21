@@ -73,7 +73,9 @@ export default class Login extends Component {
                     </View>
                 </View>
                 <View style={styles.btn_container}>
-                    <Button>登录</Button>
+                    <TouchableHighlight style={styles.login_btn}>
+                        <Text style={styles.login_btn_text}>登录</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
         );
@@ -92,6 +94,7 @@ const styles = StyleSheet.create({
         // 奇怪，padding竟然有效
         paddingLeft: 20,
         paddingRight: 20,
+        // width:width-10,
     },
     bread: {
         marginTop: 30,
@@ -107,7 +110,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         flexDirection: 'row',
 
-        borderColor: 'gray',
+        width:width*0.9,
+        borderColor: 'red',
         borderWidth: 1,
     },
     form_line_no_border: {
@@ -132,9 +136,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     ipt: {
+        flex: 1,
         height: 40,
-        width: width * 0.7,
-        borderColor: 'gray',
+        // width: width * 0.6,
+        borderColor: 'blue',
         borderWidth: 1,
 
         fontSize: 16,
@@ -160,6 +165,20 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     btn_container: {},
+    login_btn:{
+        padding: 12,
+        backgroundColor: '#DCDCDC',
+        borderColor: '#DCDCDC',
+        borderWidth: 1,
+        borderRadius: 5,
+    },
+    login_btn_text:{
+        textAlign:'center',
+        // height:50,
+        textAlignVertical:'center',
+        color: 'grey',
+        fontSize:16,
+    },
 });
 
 
