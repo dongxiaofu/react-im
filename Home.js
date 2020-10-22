@@ -20,6 +20,7 @@ import Detail from './Detail';
 import Movies from './Movies';
 import MovieDetail from './MovieDetail';
 import {Actions} from 'react-native-router-flux';
+import Contact from './Contact';
 
 
 // const Stack = createStackNavigator;
@@ -102,12 +103,13 @@ class Home extends Component {
         );
     }
 
-    Contact({}) {
+    renderContact({}) {
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>Settings!</Text>
-                <Button title="Go to Login" onPress={() => Actions.contact()}/>
-            </View>
+            // <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            //     <Text>Settings!</Text>
+            //     <Button title="Go to Login" onPress={() => Actions.contact()}/>
+            // </View>
+            <Contact />
         );
     }
 
@@ -140,7 +142,7 @@ class Home extends Component {
                 <Tab.Screen name="Home" options={{title: 'Overview'}} component={this.HomeScreen}/>
                 <Tab.Screen name="Login" component={this.Login}/>
                 <Tab.Screen name="Register" component={this.Register}/>
-                <Tab.Screen name="Contact" component={this.Contact}/>
+                <Tab.Screen name="Contact" component={this.renderContact}/>
                 {/*<Stack.Screen name="Movie" component={MovieDetail} />*/}
                 {/*<Tab.Screen name="Root" component={this.Other} />*/}
             </Tab.Navigator>

@@ -23,17 +23,20 @@ import * as InteractionManager from 'react-native';
 const {height, width} = Dimensions.get('window');
 
 type Props = {};
-export default class App extends Component<Props> {
+export default class Contact extends Component<Props> {
     constructor(props) {
         super(props);
 
         this.search = this.search.bind(this);
+
+        this.listItemPositions = [];
 
         this.state = {
             contacts: [],
             searchPlaceholder: 'Search',
             typeText: null,
             loading: true,
+            anchorName: '',
         };
 
         // if you want to read/write the contact note field on iOS, this method has to be called
@@ -132,22 +135,22 @@ export default class App extends Component<Props> {
         };
 
         let contacts = [
-            {contact,idName:'A'},
-            {contact,idName: 'B'},
-            // contact,
-            // contact,
+            {contact, idName: 'A'},
+            {contact, idName: 'B'},
+            {contact, idName: 'C'},
+            {contact, idName: 'D'},
             // contact,
             // contact,
             // contact,
             // contact
-            ];
+        ];
         this.setState({contacts, loading: true});
 
         InteractionManager.runAfterInteractions(() => {
             // this.myScrollView.scrollTo(100);
 
-            console.log("called DidMount");
-        })
+            console.log('called DidMount');
+        });
 
 
         // if (Platform.OS === "android") {
@@ -226,9 +229,9 @@ export default class App extends Component<Props> {
         Actions.userhome(userId);
     }
 
-    renderListItem(contacts) {
-        let contact = contacts.contact
-        let idName = contacts.idName
+    renderListItem(contact) {
+        let idName = contact.idName;
+        let contactItem = contact.contact
         const Item = ({item}) => (
             <TouchableHighlight onPress={() => this._pressRow(item.id)}>
                 <View style={contacts.container}>
@@ -242,13 +245,26 @@ export default class App extends Component<Props> {
         );
 
         return (
-            <View id={idName}>
+            <View
+                onLayout={event => {
+                    // console.log('-----------contacts------------start')
+                    // console.log(contacts)
+                    // console.log('-----------contacts------------end')
+                    this.layoutX = event.nativeEvent.layout.x;
+                    this.layoutY = event.nativeEvent.layout.y;
+                    // alert('Y:' + idName)
+                    // this.listItemPositions.push({category: 'idName', layoutY: 34});
+                    // this.listItemPositions.push({event:event.nativeEvent.layout});
+
+                    this.listItemPositions.push({category: idName, layoutY: event.nativeEvent.layout.y});
+                }}
+            >
                 <View style={styles.categoryContainer}>
-                    <Text style={styles.category}>Hello</Text>
+                    <Text style={styles.category}>{idName}</Text>
                 </View>
                 <View style={listItemStyles.container}>
                     <FlatList
-                        data={contact.users}
+                        data={contactItem.users}
                         renderItem={Item}
                         keyExtractor={item => item.id}
                     />
@@ -258,9 +274,37 @@ export default class App extends Component<Props> {
     }
 
     scrollToAnchor = (anchorName) => {
-        alert('hi');
+        console.log(anchorName);
+        console.log('========start================');
+        for (let index = 0; index < this.listItemPositions.length; index++) {
+            let item = this.listItemPositions[index];
+            console.log(item);
+            if (item.category == anchorName) {
+                this.myScrollView.scrollTo({x: 0, y: item.layoutY+800, animated: true});
+            }
+        }
+        console.log('========end================');
+        // for (let postion in this.listItemPositions) {
+        //     // alert(this.listItemPositions[postion].y)
+        //     // alert(anchorName)
+        //     if (postion.category == anchorName) {
+        //         // this.myScrollView.scrollTo({x: 0, y: postion.layoutY + 800, animated: true});
+        //     }
+        // }
+        //
+        // this.listItemPositions.forEach(function (v){
+        //     alert(v.idName)
+        //     let anchorName = this.state.anchorName
+        //     alert(anchorName)
+        //     if(counter == 5){
+        //         return
+        //     }
+        //     counter++
+        //     if(v.idName==anchorName){
+        //         this.myScrollView.scrollTo({x: 0, y: v.layoutY + 800, animated: true});
+        //     }
+        // });
 
-        this.myScrollView.scrollTo({ x: 500, y: this.layoutY+800, animated: true});
         //
         // if (anchorName) {
         //     const tabBar  = document.getElementById('tab-bar').offsetHeight
@@ -269,7 +313,7 @@ export default class App extends Component<Props> {
         //         anchorElement.scrollIntoView()
         //     }
         // }
-    }
+    };
 
 
     render() {
@@ -277,7 +321,7 @@ export default class App extends Component<Props> {
             <SafeAreaView style={styles.container}>
                 <View style={category.list}>
                     <TouchableHighlight
-                        onPress={ () => this.scrollToAnchor('A', true)}
+                        onPress={() => this.scrollToAnchor('A', true)}
                     >
                         <Text style={category.listItem}>A</Text>
                     </TouchableHighlight>
@@ -309,20 +353,16 @@ export default class App extends Component<Props> {
                     <Text style={category.listItem}>Z</Text>
                 </View>
                 <ScrollView style={{flex: 1}}
-                            ref={(view) => { this.myScrollView = view; }}
-                            >
-                    <View
-                        onLayout={event=>{
-                            this.layoutX = event.nativeEvent.layout.x
-                            this.layoutY = event.nativeEvent.layout.y
-                        }}
-                    >
-                        {this.state.contacts.map(contact => {
-                            return (
-                                this.renderListItem(contact)
-                            );
-                        })}
-                    </View>
+                            ref={(view) => {
+                                this.myScrollView = view;
+                            }}
+                >
+
+                    {this.state.contacts.map(contact => {
+                        return (
+                            this.renderListItem(contact)
+                        );
+                    })}
                 </ScrollView>
             </SafeAreaView>
         );
@@ -349,12 +389,12 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
         marginLeft: 10,
     },
-    username:{
-        flex:1,
-        borderBottomWidth:0.5,
-        marginLeft:10,
+    username: {
+        flex: 1,
+        borderBottomWidth: 0.5,
+        marginLeft: 10,
         textAlignVertical: 'center',
-        fontSize:16,
+        fontSize: 16,
     },
     spinner: {
         flex: 1,
@@ -371,21 +411,21 @@ const styles = StyleSheet.create({
 });
 
 const contacts = StyleSheet.create({
-    container:{
+    container: {
         marginTop: 20,
         flexDirection: 'row',
     },
 });
 
 const category = StyleSheet.create({
-    list:{
+    list: {
         marginTop: 20,
         flexDirection: 'column',
-        position:'absolute',
-        right:10,
-        zIndex:200,
+        position: 'absolute',
+        right: 10,
+        zIndex: 200,
     },
-    listItem:{},
+    listItem: {},
 });
 
 const listItemStyles = StyleSheet.create({
