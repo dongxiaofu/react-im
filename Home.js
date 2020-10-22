@@ -102,6 +102,15 @@ class Home extends Component {
         );
     }
 
+    Contact({}) {
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>Settings!</Text>
+                <Button title="Go to Login" onPress={() => Actions.contact()}/>
+            </View>
+        );
+    }
+
 
     // render() {
     //     const Tab = createBottomTabNavigator();
@@ -131,6 +140,7 @@ class Home extends Component {
                 <Tab.Screen name="Home" options={{title: 'Overview'}} component={this.HomeScreen}/>
                 <Tab.Screen name="Login" component={this.Login}/>
                 <Tab.Screen name="Register" component={this.Register}/>
+                <Tab.Screen name="Contact" component={this.Contact}/>
                 {/*<Stack.Screen name="Movie" component={MovieDetail} />*/}
                 {/*<Tab.Screen name="Root" component={this.Other} />*/}
             </Tab.Navigator>

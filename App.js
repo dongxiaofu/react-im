@@ -36,6 +36,7 @@ import BlogCover from './BlogCover';
 import BlogDetail from './BlogDetail';
 import Register from './Register';
 import Login from './Login';
+import Contact from './Contact';
 
 // const Stack = createStackNavigator();
 
@@ -62,6 +63,8 @@ function App() {
                 <Scene key="register" component={Register} title="注册"/>
                 {/*登录*/}
                 <Scene key="login" component={Login} title="登录"/>
+                {/*通讯录*/}
+                <Scene key="contact" component={Contact} title="通讯录"/>
             </Stack>
         </Router>);
 }
