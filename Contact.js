@@ -18,6 +18,7 @@ import ListItem from './components/ListItem';
 import Avatar from './components/Avatar';
 import SearchBar from './components/SearchBar';
 import {Actions} from 'react-native-router-flux';
+import * as InteractionManager from 'react-native';
 
 const {height, width} = Dimensions.get('window');
 
@@ -130,8 +131,23 @@ export default class App extends Component<Props> {
             ],
         };
 
-        let contacts = [contact, contact, contact, contact, contact, contact, contact, contact];
+        let contacts = [
+            {contact,idName:'A'},
+            {contact,idName: 'B'},
+            // contact,
+            // contact,
+            // contact,
+            // contact,
+            // contact,
+            // contact
+            ];
         this.setState({contacts, loading: true});
+
+        InteractionManager.runAfterInteractions(() => {
+            // this.myScrollView.scrollTo(100);
+
+            console.log("called DidMount");
+        })
 
 
         // if (Platform.OS === "android") {
@@ -210,7 +226,9 @@ export default class App extends Component<Props> {
         Actions.userhome(userId);
     }
 
-    renderListItem(contact) {
+    renderListItem(contacts) {
+        let contact = contacts.contact
+        let idName = contacts.idName
         const Item = ({item}) => (
             <TouchableHighlight onPress={() => this._pressRow(item.id)}>
                 <View style={contacts.container}>
@@ -224,7 +242,7 @@ export default class App extends Component<Props> {
         );
 
         return (
-            <View>
+            <View id={idName}>
                 <View style={styles.categoryContainer}>
                     <Text style={styles.category}>Hello</Text>
                 </View>
@@ -239,11 +257,31 @@ export default class App extends Component<Props> {
         );
     }
 
+    scrollToAnchor = (anchorName) => {
+        alert('hi');
+
+        this.myScrollView.scrollTo({ x: 500, y: this.layoutY+800, animated: true});
+        //
+        // if (anchorName) {
+        //     const tabBar  = document.getElementById('tab-bar').offsetHeight
+        //     let anchorElement = document.getElementById(anchorName);
+        //     if (anchorElement) {
+        //         anchorElement.scrollIntoView()
+        //     }
+        // }
+    }
+
+
     render() {
         return (
             <SafeAreaView style={styles.container}>
                 <View style={category.list}>
-                    <Text style={category.listItem}>A</Text>
+                    <TouchableHighlight
+                        onPress={ () => this.scrollToAnchor('A', true)}
+                    >
+                        <Text style={category.listItem}>A</Text>
+                    </TouchableHighlight>
+
                     <Text style={category.listItem}>B</Text>
                     <Text style={category.listItem}>C</Text>
                     <Text style={category.listItem}>D</Text>
@@ -270,12 +308,21 @@ export default class App extends Component<Props> {
                     <Text style={category.listItem}>Y</Text>
                     <Text style={category.listItem}>Z</Text>
                 </View>
-                <ScrollView style={{flex: 1}}>
-                    {this.state.contacts.map(contact => {
-                        return (
-                            this.renderListItem(contact)
-                        );
-                    })}
+                <ScrollView style={{flex: 1}}
+                            ref={(view) => { this.myScrollView = view; }}
+                            >
+                    <View
+                        onLayout={event=>{
+                            this.layoutX = event.nativeEvent.layout.x
+                            this.layoutY = event.nativeEvent.layout.y
+                        }}
+                    >
+                        {this.state.contacts.map(contact => {
+                            return (
+                                this.renderListItem(contact)
+                            );
+                        })}
+                    </View>
                 </ScrollView>
             </SafeAreaView>
         );
