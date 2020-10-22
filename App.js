@@ -65,6 +65,8 @@ function App() {
                 <Scene key="login" component={Login} title="登录"/>
                 {/*通讯录*/}
                 <Scene key="contact" component={Contact} title="通讯录"/>
+                {/*个人简介页面，比如昵称、地区等*/}
+                <Scene key="userhome" component={UserHome} title=""/>
             </Stack>
         </Router>);
 }

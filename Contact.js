@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
     PermissionsAndroid,
     Platform,
@@ -10,13 +10,16 @@ import {
     Image,
     TextInput,
     ActivityIndicator,
-    Button
-} from "react-native";
-import Contacts from "react-native-contacts";
+    Button, FlatList, TouchableHighlight, Dimensions,
+} from 'react-native';
+import Contacts from 'react-native-contacts';
 
-import ListItem from "./components/ListItem";
-import Avatar from "./components/Avatar";
-import SearchBar from "./components/SearchBar";
+import ListItem from './components/ListItem';
+import Avatar from './components/Avatar';
+import SearchBar from './components/SearchBar';
+import {Actions} from 'react-native-router-flux';
+
+const {height, width} = Dimensions.get('window');
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -27,9 +30,9 @@ export default class App extends Component<Props> {
 
         this.state = {
             contacts: [],
-            searchPlaceholder: "Search",
+            searchPlaceholder: 'Search',
             typeText: null,
-            loading: true
+            loading: true,
         };
 
         // if you want to read/write the contact note field on iOS, this method has to be called
@@ -40,6 +43,97 @@ export default class App extends Component<Props> {
     }
 
     async componentDidMount() {
+        let contact = {
+            recordID: '6b2237ee0df85980',
+            users: [
+                {
+                    userId: 1,
+                    username: '唐僧',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+                {
+                    userId: 2,
+                    username: '孙悟空',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+                {
+                    userId: 3,
+                    username: '猪八戒',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+                {
+                    userId: 4,
+                    username: '沙和尚',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+                {
+                    userId: 5,
+                    username: '如来',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+                {
+                    userId: 6,
+                    username: '二郎神',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+                {
+                    userId: 7,
+                    username: '嫦娥',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+                {
+                    userId: 8,
+                    username: '小白龙',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+                {
+                    userId: 9,
+                    username: '观音',
+                    thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                },
+            ],
+            backTitle: '',
+            company: '',
+            emailAddresses: [{
+                label: 'work',
+                email: 'carl-jung@example.com',
+            }],
+            familyName: 'Jung',
+            givenName: 'Carl',
+            middleName: '',
+            jobTitle: '',
+            phoneNumbers: [{
+                label: 'mobile',
+                number: '(555) 555-5555',
+            }],
+            hasThumbnail: true,
+            thumbnailPath: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+            postalAddresses: [{
+                label: 'home',
+                formattedAddress: '',
+                street: '123 Fake Street',
+                pobox: '',
+                neighborhood: '',
+                city: 'Sample City',
+                region: 'CA',
+                state: 'CA',
+                postCode: '90210',
+                country: 'USA',
+            }],
+            prefix: 'MR',
+            suffix: '',
+            department: '',
+            birthday: {'year': 1988, 'month': 0, 'day': 1},
+            imAddresses: [
+                {username: '0123456789', service: 'ICQ'},
+                {username: 'johndoe123', service: 'Facebook'},
+            ],
+        };
+
+        let contacts = [contact, contact, contact, contact, contact, contact, contact, contact];
+        this.setState({contacts, loading: true});
+
+
         // if (Platform.OS === "android") {
         //     PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
         //         title: "Contacts",
@@ -55,47 +149,47 @@ export default class App extends Component<Props> {
     loadContacts() {
         Contacts.getAll()
             .then(contacts => {
-                this.setState({ contacts, loading: false });
+                this.setState({contacts, loading: false});
             })
             .catch(e => {
-                this.setState({ loading: false });
+                this.setState({loading: false});
             });
 
         Contacts.getCount().then(count => {
-            this.setState({ searchPlaceholder: `Search ${count} contacts` });
+            this.setState({searchPlaceholder: `Search ${count} contacts`});
         });
     }
 
     search(text) {
         const phoneNumberRegex = /\b[\+]?[(]?[0-9]{2,6}[)]?[-\s\.]?[-\s\/\.0-9]{3,15}\b/m;
         const emailAddressRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-        if (text === "" || text === null) {
+        if (text === '' || text === null) {
             this.loadContacts();
         } else if (phoneNumberRegex.test(text)) {
             Contacts.getContactsByPhoneNumber(text).then(contacts => {
-                this.setState({ contacts });
+                this.setState({contacts});
             });
         } else if (emailAddressRegex.test(text)) {
             Contacts.getContactsByEmailAddress(text).then(contacts => {
-                this.setState({ contacts });
+                this.setState({contacts});
             });
         } else {
             Contacts.getContactsMatchingString(text).then(contacts => {
-                this.setState({ contacts });
+                this.setState({contacts});
             });
         }
     }
 
     onPressContact(contact) {
         var text = this.state.typeText;
-        this.setState({ typeText: null });
-        if (text === null || text === '')
-            Contacts.openExistingContact(contact)
-        else {
+        this.setState({typeText: null});
+        if (text === null || text === '') {
+            Contacts.openExistingContact(contact);
+        } else {
             var newPerson = {
                 recordID: contact.recordID,
-                phoneNumbers: [{ label: 'mobile', number: text }]
-            }
+                phoneNumbers: [{label: 'mobile', number: text}],
+            };
             Contacts.editExistingContact(newPerson).then(contact => {
                 //contact updated
             });
@@ -105,92 +199,84 @@ export default class App extends Component<Props> {
     addNew() {
         Contacts.openContactForm({}).then(contact => {
             // Added new contact
-            this.setState(({ contacts }) => ({
+            this.setState(({contacts}) => ({
                 contacts: [contact, ...contacts],
-                loading: false
+                loading: false,
             }));
-        })
+        });
+    }
+
+    _pressRow(userId) {
+        Actions.userhome(userId);
+    }
+
+    renderListItem(contact) {
+        const Item = ({item}) => (
+            <TouchableHighlight onPress={() => this._pressRow(item.id)}>
+                <View style={contacts.container}>
+                    <Image
+                        source={{uri: item.thumbnailPath}}
+                        style={styles.thumbnail}
+                    />
+                    <Text style={styles.username}>{item.username}</Text>
+                </View>
+            </TouchableHighlight>
+        );
+
+        return (
+            <View>
+                <View style={styles.categoryContainer}>
+                    <Text style={styles.category}>Hello</Text>
+                </View>
+                <View style={listItemStyles.container}>
+                    <FlatList
+                        data={contact.users}
+                        renderItem={Item}
+                        keyExtractor={item => item.id}
+                    />
+                </View>
+            </View>
+        );
     }
 
     render() {
         return (
-            // <View>
-            //     <Text>Hello</Text>
-            // </View>
             <SafeAreaView style={styles.container}>
-                <View
-                    style={{
-                        paddingLeft: 100,
-                        paddingRight: 100,
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}
-                >
-                    <Image
-                        source={require("./logo.png")}
-                        style={{
-                            aspectRatio: 6,
-                            resizeMode: "contain"
-                        }}
-                    />
+                <View style={category.list}>
+                    <Text style={category.listItem}>A</Text>
+                    <Text style={category.listItem}>B</Text>
+                    <Text style={category.listItem}>C</Text>
+                    <Text style={category.listItem}>D</Text>
+                    <Text style={category.listItem}>E</Text>
+                    <Text style={category.listItem}>F</Text>
+                    <Text style={category.listItem}>G</Text>
+                    <Text style={category.listItem}>H</Text>
+                    <Text style={category.listItem}>I</Text>
+                    <Text style={category.listItem}>J</Text>
+                    <Text style={category.listItem}>K</Text>
+                    <Text style={category.listItem}>L</Text>
+                    <Text style={category.listItem}>M</Text>
+                    <Text style={category.listItem}>N</Text>
+                    <Text style={category.listItem}>O</Text>
+                    <Text style={category.listItem}>P</Text>
+                    <Text style={category.listItem}>Q</Text>
+                    <Text style={category.listItem}>R</Text>
+                    <Text style={category.listItem}>S</Text>
+                    <Text style={category.listItem}>T</Text>
+                    <Text style={category.listItem}>U</Text>
+                    <Text style={category.listItem}>V</Text>
+                    <Text style={category.listItem}>W</Text>
+                    <Text style={category.listItem}>X</Text>
+                    <Text style={category.listItem}>Y</Text>
+                    <Text style={category.listItem}>Z</Text>
                 </View>
-                <Button title="Add new" onPress={() => this.addNew()} />
-                <SearchBar
-                    searchPlaceholder={this.state.searchPlaceholder}
-                    onChangeText={this.search}
-                />
-
-                <View style={{ paddingLeft: 10, paddingRight: 10 }}>
-                    <TextInput
-                        keyboardType='number-pad'
-                        style={styles.inputStyle}
-                        placeholder='Enter number to add to contact'
-                        onChangeText={text => this.setState({ typeText: text })}
-                        value={this.state.typeText}
-                    />
-                </View>
-
-                {
-                    this.state.loading === true ?
-                        (
-                            <View style={styles.spinner}>
-                                <ActivityIndicator size="large" color="#0000ff" />
-                            </View>
-                        ) : (
-                            <ScrollView style={{ flex: 1 }}>
-                                {this.state.contacts.map(contact => {
-                                    return (
-                                        <ListItem
-                                            leftElement={
-                                                <Avatar
-                                                    img={
-                                                        contact.hasThumbnail
-                                                            ? { uri: contact.thumbnailPath }
-                                                            : undefined
-                                                    }
-                                                    placeholder={getAvatarInitials(
-                                                        `${contact.givenName} ${contact.familyName}`
-                                                    )}
-                                                    width={40}
-                                                    height={40}
-                                                />
-                                            }
-                                            key={contact.recordID}
-                                            title={`${contact.givenName} ${contact.familyName}`}
-                                            description={`${contact.company}`}
-                                            onPress={() => this.onPressContact(contact)}
-                                            onDelete={() =>
-                                                Contacts.deleteContact(contact).then(() => {
-                                                    this.loadContacts();
-                                                })
-                                            }
-                                        />
-                                    );
-                                })}
-                            </ScrollView>
-                        )
-                }
-
+                <ScrollView style={{flex: 1}}>
+                    {this.state.contacts.map(contact => {
+                        return (
+                            this.renderListItem(contact)
+                        );
+                    })}
+                </ScrollView>
             </SafeAreaView>
         );
     }
@@ -198,33 +284,71 @@ export default class App extends Component<Props> {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+    },
+    thumbnail: {
+        width: 45,
+        height: 40,
+        borderRadius: 5,
+    },
+    categoryContainer: {
+        backgroundColor: 'grey',
+        width: width,
+        marginTop: 15,
+        // marginBottom: 15,
+    },
+    category: {
+        height: 40,
+        textAlignVertical: 'center',
+        marginLeft: 10,
+    },
+    username:{
+        flex:1,
+        borderBottomWidth:0.5,
+        marginLeft:10,
+        textAlignVertical: 'center',
+        fontSize:16,
     },
     spinner: {
         flex: 1,
         flexDirection: 'column',
-        alignContent: "center",
-        justifyContent: "center"
+        alignContent: 'center',
+        justifyContent: 'center',
     },
     inputStyle: {
         height: 40,
         borderColor: 'gray',
         borderWidth: 1,
-        textAlign: "center"
-    }
+        textAlign: 'center',
+    },
 });
 
-const getAvatarInitials = textString => {
-    if (!textString) return "";
+const contacts = StyleSheet.create({
+    container:{
+        marginTop: 20,
+        flexDirection: 'row',
+    },
+});
 
-    const text = textString.trim();
+const category = StyleSheet.create({
+    list:{
+        marginTop: 20,
+        flexDirection: 'column',
+        position:'absolute',
+        right:10,
+        zIndex:200,
+    },
+    listItem:{},
+});
 
-    const textSplit = text.split(" ");
+const listItemStyles = StyleSheet.create({
+    container: {
+        // flex: 1,
+        // height: 40,
+        // textAlignVertical:'center',
+        // backgroundColor:'grey',
+        marginLeft: 10,
+    },
+});
 
-    if (textSplit.length <= 1) return text.charAt(0);
 
-    const initials =
-        textSplit[0].charAt(0) + textSplit[textSplit.length - 1].charAt(0);
-
-    return initials;
-};
