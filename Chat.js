@@ -38,7 +38,7 @@ export default class Chat extends Component {
         };
     }
 
-    _pressRow(){
+    _pressRow() {
         Actions.userhome();
     }
 
@@ -114,8 +114,10 @@ export default class Chat extends Component {
                         style={styles.thumbnail}
                     />
                 </TouchableHighlight>
+                {/*(item.id) ?(<View>):*/}
+                {/*(<View style={styles.rightContainer}>)*/}
                 <View style={styles.rightContainer}>
-                    <Text style={styles.name}>小王</Text>
+                    {/*<Text style={styles.name}>小王</Text>*/}
                     <Text
                         style={styles.message}>需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
                 </View>
@@ -144,7 +146,7 @@ export default class Chat extends Component {
                 }}>
                     <TextInput
                         style={styles._input}
-                        placeholder="Type here to translate!"
+                        placeholder=""
                         // onChangeText={text => setText(text)}
                         // defaultValue={text}
                     />
@@ -164,7 +166,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // justifyContent: 'center',
         // alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#F5F5F5',
         paddingTop: 10,
         // paddingBottom: 20,
     },
@@ -172,6 +174,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 20,
         borderBottomWidth: 1,
+        backgroundColor: '#5bf812',
     },
     title: {
         fontSize: 20,
@@ -196,13 +199,13 @@ const styles = StyleSheet.create({
     },
 
     _input: {
-        height: 50,
-        width: width * 0.9,
+        height: 40,
+        width: width * 0.8,
         backgroundColor: '#F5FCFF',
         marginTop: 10,
         marginBottom: 10,
         marginLeft: 5,
-        marginRight: 10,
+        marginRight: 50,
         /*  alignSelf:'center',*/
         justifyContent: 'center',
         alignItems: 'center',
