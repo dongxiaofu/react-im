@@ -19,6 +19,10 @@ import {Component, useState} from 'react';
 import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
 import {Actions} from 'react-native-router-flux';
 
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
 const {height, width} = Dimensions.get('window');
 // var {width,height} = Dimensions.get('window');
 
@@ -144,6 +148,28 @@ export default class Chat extends Component {
                     // zIndex: 50,
                     backgroundColor: '#e2e2e2',//'#e2e2e2',
                 }}>
+                    <View style={{
+                        position: 'absolute',
+                        right: 0,
+                        bottom: 10,
+                        flex: 1,
+                        flexDirection: 'row',
+
+                    }}>
+                        <Fontisto name="smiley" size={30} color="black"
+                                  style={{
+                                      height: 30,
+                                      width: 35,
+                                  }}
+                        />
+                        <MaterialCommunityIcons name="plus-circle-outline" size={35} color="black"
+                                                style={{
+                                                    height: 35,
+                                                    width: 35,
+                                                    bottom:4,
+                                                }}
+                        />
+                    </View>
                     <TextInput
                         style={styles._input}
                         placeholder=""
