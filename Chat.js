@@ -105,6 +105,50 @@ export default class Chat extends Component {
                 date: '昨天',
                 posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
             },
+
+            {
+                id: '9',
+                title: 'Web开发',
+                year: '疫情之下的众生相',
+                date: '10月17日',
+                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+            },
+            {
+                id: '10',
+                title: '订阅号消息',
+                year: '小明撤回了一个群待办',
+                date: '18:19',
+                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+            },
+            {
+                id: '11',
+                title: 'Web开发',
+                year: '疫情之下的众生相',
+                date: '昨天',
+                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+            },
+
+            {
+                id: '12',
+                title: 'Web开发',
+                year: '疫情之下的众生相',
+                date: '10月17日',
+                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+            },
+            {
+                id: '13',
+                title: '订阅号消息',
+                year: '小明撤回了一个群待办',
+                date: '18:19',
+                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+            },
+            {
+                id: '14',
+                title: 'Web开发',
+                year: '疫情之下的众生相',
+                date: '昨天',
+                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+            },
         ];
 
         const Item = ({item}) => (
@@ -140,7 +184,6 @@ export default class Chat extends Component {
                     keyExtractor={item => item.id}
                 />
                 <View style={{
-                    // padding: 10,
                     position: 'absolute',
                     width: width,
                     bottom: 0,

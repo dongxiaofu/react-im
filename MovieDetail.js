@@ -17,6 +17,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Component, useState} from 'react';
 import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const {height, width} = Dimensions.get('window');
 // var {width,height} = Dimensions.get('window');
@@ -35,6 +37,55 @@ export default class MovieDetail extends Component {
         this.state = {
             listData: [],
         };
+    }
+
+    RenderItem2({item}) {
+        console.log('=============item start================');
+        console.log({item});
+        console.log('=============item end================');
+        return (
+            <View style={styles.container}>
+                <Image
+                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                    style={styles.thumbnail}
+                />
+                <View style={styles.rightContainer}>
+                    <Text style={styles.name}>{item.id}小王</Text>
+                    <Text
+                        style={styles.message}>需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
+                </View>
+            </View>
+        );
+    }
+
+    renderReverseItem({item}) {
+        return (
+            <View style={styles.container}>
+                <Image
+                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                    style={styles.thumbnail}
+                />
+                <View style={styles.rightContainer}>
+                    <Text style={styles.name}>小王2</Text>
+                    <Text
+                        style={styles.message}>4444需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
+                </View>
+            </View>
+        );
+    }
+
+    test() {
+        return (<Text>Hello</Text>);
+    }
+
+    renderListItem(item) {
+        // const RenderItem = this.test
+        // console.log(RenderItem)
+        let which = item.id % 2;
+        console.log(which);
+        // alert(which)
+        return (<View component={this.test()}></View>);
+        // return (which ? <renderItem item={item}/> : <renderReverseItem item={item}/>);
     }
 
     render() {
@@ -97,6 +148,7 @@ export default class MovieDetail extends Component {
                 posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
             },
         ];
+        // const [text, setText] = useState('');
 
         const Item = ({item}) => (
             <View style={styles.container}>
@@ -112,7 +164,20 @@ export default class MovieDetail extends Component {
             </View>
         );
 
-        // const [text, setText] = useState('');
+        // const ReverseItem = ({item}) => (
+        //     <View style={styles.container}>
+        //         <View style={styles.rightContainer}>
+        //             <Text style={styles.name}>小王</Text>
+        //             <Text
+        //                 style={styles.message}>需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
+        //         </View>
+        //         <Image
+        //             source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+        //             style={styles.thumbnail}
+        //         />
+        //     </View>
+        // );
+
 
         const text = '请输入22';
 
@@ -120,21 +185,78 @@ export default class MovieDetail extends Component {
             <SafeAreaView style={styles.container}>
                 <FlatList
                     data={MESSAGES}
-                    renderItem={Item}
+                    // renderItem={Item}
+                    renderItem={({item, index}) => {
+                        if (index % 2 == 0) {
+                            return (
+                                <View style={styles.container}>
+                                    <Image
+                                        source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                                        style={styles.thumbnail}
+                                    />
+                                    <View style={styles.rightContainer}>
+                                        <Text style={styles.name}>{item.id}小王</Text>
+                                        <Text
+                                            style={styles.message}>需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
+                                    </View>
+                                </View>
+                            );
+                        }
+                        return (
+                            <View style={myself_styles.container}>
+
+                                <View style={myself_styles.rightContainer}>
+                                    <Text style={myself_styles.name}>小王2</Text>
+                                    <Text
+                                        style={myself_styles.message}>4444需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
+                                </View>
+                                <Image
+                                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                                    style={myself_styles.thumbnail}
+                                />
+                            </View>
+                        );
+                        // item为定义
+                        // <View>
+                        //     {index % 2 == 0 ? this.RenderItem2(item.item) : this.renderReverseItem(item) }
+                        // </View>
+                    }}
+
                     keyExtractor={item => item.id}
                 />
                 <View style={{
-                    // padding: 10,
                     position: 'absolute',
-                    width:width,
+                    width: width,
                     bottom: 0,
                     left: 0,
                     // zIndex: 50,
                     backgroundColor: '#e2e2e2',//'#e2e2e2',
                 }}>
+                    <View style={{
+                        position: 'absolute',
+                        right: 0,
+                        bottom: 10,
+                        flex: 1,
+                        flexDirection: 'row',
+
+                    }}>
+                        <Fontisto name="smiley" size={30} color="black"
+                                  style={{
+                                      height: 30,
+                                      width: 35,
+                                  }}
+                        />
+                        <MaterialCommunityIcons name="plus-circle-outline" size={35} color="black"
+                                                style={{
+                                                    height: 35,
+                                                    width: 35,
+                                                    bottom: 4,
+                                                }}
+                        />
+                    </View>
                     <TextInput
                         style={styles._input}
-                        placeholder="Type here to translate!"
+                        placeholder=""
                         // onChangeText={text => setText(text)}
                         // defaultValue={text}
                     />
@@ -154,14 +276,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // justifyContent: 'center',
         // alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#F5F5F5',
         paddingTop: 10,
         // paddingBottom: 20,
     },
     rightContainer: {
         flex: 1,
-        marginLeft: 20,
-        borderBottomWidth: 1,
+        marginLeft: 10,
+        marginRight:70,
+        // borderBottomWidth: 1,
+        backgroundColor: 'white',
+        marginTop:10,
+        marginBottom:10,
+        borderRadius:5,
+        padding:10,
     },
     title: {
         fontSize: 20,
@@ -177,22 +305,22 @@ const styles = StyleSheet.create({
         right: 15,
     },
     thumbnail: {
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
+        borderRadius:5,
     },
     list: {
         paddingTop: 20,
         backgroundColor: '#F5FCFF',
     },
-
     _input: {
-        height: 50,
-        width: width*0.9,
+        height: 40,
+        width: width * 0.8,
         backgroundColor: '#F5FCFF',
         marginTop: 10,
         marginBottom: 10,
         marginLeft: 5,
-        marginRight:10,
+        marginRight: 50,
         /*  alignSelf:'center',*/
         justifyContent: 'center',
         alignItems: 'center',
@@ -200,3 +328,64 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
 });
+
+const myself_styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        backgroundColor: '#F5F5F5',
+        paddingTop: 10,
+        // paddingBottom: 20,
+    },
+    rightContainer: {
+        flex: 1,
+        marginRight: 10,
+        // borderBottomWidth: 1,
+        backgroundColor: '#5bf812',
+        marginLeft:70,
+        marginTop:10,
+        marginBottom:10,
+        borderRadius:5,
+        padding:10,
+    },
+    title: {
+        fontSize: 20,
+        marginBottom: 8,
+        textAlign: 'right',
+    },
+    year: {
+        textAlign: 'left',
+    },
+    date: {
+        position: 'absolute',
+        top: 10,
+        right: 15,
+    },
+    thumbnail: {
+        width: 50,
+        height: 50,
+        borderRadius:5,
+    },
+    list: {
+        paddingTop: 20,
+        backgroundColor: '#F5FCFF',
+    },
+    _input: {
+        height: 40,
+        width: width * 0.8,
+        backgroundColor: '#F5FCFF',
+        marginTop: 10,
+        marginBottom: 10,
+        marginLeft: 5,
+        marginRight: 50,
+        /*  alignSelf:'center',*/
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 2,
+        fontSize: 20,
+    },
+});
+
+
