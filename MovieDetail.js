@@ -19,6 +19,7 @@ import {Component, useState} from 'react';
 import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Actions} from 'react-native-router-flux';
 
 const {height, width} = Dimensions.get('window');
 // var {width,height} = Dimensions.get('window');
@@ -74,18 +75,8 @@ export default class MovieDetail extends Component {
         );
     }
 
-    test() {
-        return (<Text>Hello</Text>);
-    }
-
-    renderListItem(item) {
-        // const RenderItem = this.test
-        // console.log(RenderItem)
-        let which = item.id % 2;
-        console.log(which);
-        // alert(which)
-        return (<View component={this.test()}></View>);
-        // return (which ? <renderItem item={item}/> : <renderReverseItem item={item}/>);
+    _pressRow() {
+        Actions.userhome();
     }
 
     render() {
@@ -148,38 +139,6 @@ export default class MovieDetail extends Component {
                 posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
             },
         ];
-        // const [text, setText] = useState('');
-
-        const Item = ({item}) => (
-            <View style={styles.container}>
-                <Image
-                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
-                    style={styles.thumbnail}
-                />
-                <View style={styles.rightContainer}>
-                    <Text style={styles.name}>小王</Text>
-                    <Text
-                        style={styles.message}>需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
-                </View>
-            </View>
-        );
-
-        // const ReverseItem = ({item}) => (
-        //     <View style={styles.container}>
-        //         <View style={styles.rightContainer}>
-        //             <Text style={styles.name}>小王</Text>
-        //             <Text
-        //                 style={styles.message}>需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
-        //         </View>
-        //         <Image
-        //             source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
-        //             style={styles.thumbnail}
-        //         />
-        //     </View>
-        // );
-
-
-        const text = '请输入22';
 
         return (
             <SafeAreaView style={styles.container}>
@@ -190,10 +149,12 @@ export default class MovieDetail extends Component {
                         if (index % 2 == 0) {
                             return (
                                 <View style={styles.container}>
+                                    <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
                                     <Image
                                         source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
                                         style={styles.thumbnail}
                                     />
+                                    </TouchableHighlight>
                                     <View style={styles.rightContainer}>
                                         <Text style={styles.name}>{item.id}小王</Text>
                                         <Text
@@ -210,10 +171,12 @@ export default class MovieDetail extends Component {
                                     <Text
                                         style={myself_styles.message}>4444需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
                                 </View>
+                                <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
                                 <Image
                                     source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
                                     style={myself_styles.thumbnail}
                                 />
+                                </TouchableHighlight>
                             </View>
                         );
                         // item为定义

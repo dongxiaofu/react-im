@@ -184,10 +184,12 @@ export default class Chat extends Component {
                         if (index % 2 == 0) {
                             return (
                                 <View style={styles.container}>
+                                    <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
                                     <Image
                                         source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
                                         style={styles.thumbnail}
                                     />
+                                    </TouchableHighlight>
                                     <View style={styles.rightContainer}>
                                         <Text style={styles.name}>{item.id}小王</Text>
                                         <Text
@@ -204,10 +206,12 @@ export default class Chat extends Component {
                                     <Text
                                         style={myself_styles.message}>4444需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
                                 </View>
+                                <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
                                 <Image
                                     source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
                                     style={myself_styles.thumbnail}
                                 />
+                                </TouchableHighlight>
                             </View>
                         );
                     }}
