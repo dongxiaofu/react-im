@@ -24,6 +24,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-picker';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const {height, width} = Dimensions.get('window');
 type Props = {
@@ -49,17 +50,18 @@ export default class Register extends Component {
         Actions.blogcover(rowID);
     }
 
-    render() {
+    openCamera() {
+        alert('hi')
+        console.log('open camera');
 
         const options = {
             title: 'Select Avatar',
-            customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+            customButtons: [{name: 'fb', title: 'Choose Photo from Facebook'}],
             storageOptions: {
                 skipBackup: true,
                 path: 'images',
             },
         };
-
         /**
          * The first arg is the options object for customization (it can also be null or omitted for default options),
          * The second arg is the callback which sends object: response (more info in the API Reference)
@@ -74,7 +76,7 @@ export default class Register extends Component {
             } else if (response.customButton) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
-                const source = { uri: response.uri };
+                const source = {uri: response.uri};
 
                 // You can also display the image using data:
                 // const source = { uri: 'data:image/jpeg;base64,' + response.data };
@@ -84,9 +86,9 @@ export default class Register extends Component {
                 });
             }
         });
+    }
 
-
-
+    render() {
         return (
             <View style={styles.container}>
                 <View style={styles.bread}>
@@ -105,8 +107,39 @@ export default class Register extends Component {
                                     placeholder={'例如：陈晨'}
                                 />
                             </View>
+                        </View>
+
+                        <View style={styles.camera} ref="camera2">
+                            <TouchableHighlight onPress={() => this.openCamera()}
+                                                title="test"
+                                                style={{
+                                                    height: 80,
+                                                    width: 80,
+                                                    position: 'absolute',
+                                                    left:0,
+                                                    borderColor:'red',
+                                                    borderWidth:1,
+                                                    zIndex:5,
+                                                    // backgroundColor:'red',
+                                                    opacity:0,
+                                                }}
+                            >
+                                <Text >Test</Text>
+                            </TouchableHighlight>
+                            <MaterialCommunityIcons name="camera-outline" size={35} color="black"
+                                                    style={{
+                                                        height: 35,
+                                                        width: 35,
+                                                        // borderWidth: 1,
+                                                        color: 'grey',
+                                                        position: 'absolute',
+                                                        top: 22.5,
+                                                        left: 22.5,
+                                                    }}
+                            />
                             <Image source={this.state.avatarSource} style={styles.uploadAvatar} />
                         </View>
+
                     </View>
                     <View style={styles.form_line_no_border}>
                         <Text style={styles.label}>国家/地区</Text>
@@ -131,7 +164,7 @@ export default class Register extends Component {
                     </View>
                 </View>
                 <View style={styles.btn_container}>
-                    <TouchableHighlight style={styles.login_btn}>
+                    <TouchableHighlight style={styles.login_btn} onPress={()=>{}}>
                         <Text style={styles.login_btn_text}>注册</Text>
                     </TouchableHighlight>
                 </View>
@@ -161,7 +194,7 @@ const styles = StyleSheet.create({
     },
     form: {
         marginTop: 40,
-        marginBottom:20,
+        marginBottom: 20,
     },
     form_line: {
         marginBottom: 10,
@@ -175,24 +208,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     nickname: {
-        width:width*0.7,
+        width: width * 0.7,
         flexDirection: 'row',
         borderColor: 'red',
         borderWidth: 1,
     },
     label: {
-        marginRight:10,
-        height:40,
-        width:width*0.2,
+        marginRight: 10,
+        height: 40,
+        width: width * 0.2,
 
         borderColor: 'gray',
         borderWidth: 1,
-        textAlignVertical:'center',
+        textAlignVertical: 'center',
 
         fontSize: 16,
     },
-    ipt:{
-        height:40,
+    ipt: {
+        height: 40,
         flex: 1,
         borderColor: 'gray',
         borderWidth: 1,
@@ -200,43 +233,52 @@ const styles = StyleSheet.create({
         fontSize: 16,
 
     },
-    ipt_small:{
-        height:40,
-        width:width*0.47,
+    ipt_small: {
+        height: 40,
+        width: width * 0.47,
         borderColor: 'gray',
         borderWidth: 1,
 
         fontSize: 16,
     },
     country: {
-        height:40,
+        height: 40,
         flex: 1,
-        color:'green',
+        color: 'green',
 
         borderColor: 'gray',
         borderWidth: 1,
-        textAlignVertical:'center',
+        textAlignVertical: 'center',
 
         fontSize: 16,
     },
     btn_container: {},
-    uploadAvatar:{
-        width:60,
-        height:60,
+    uploadAvatar: {
+        width: 80,
+        height: 80,
     },
-    login_btn:{
+    login_btn: {
         padding: 12,
         backgroundColor: '#DCDCDC',
         borderColor: '#DCDCDC',
         borderWidth: 1,
         borderRadius: 5,
     },
-    login_btn_text:{
-        textAlign:'center',
+    login_btn_text: {
+        textAlign: 'center',
         // height:50,
-        textAlignVertical:'center',
+        textAlignVertical: 'center',
         color: 'grey',
-        fontSize:16,
+        fontSize: 16,
+    },
+    camera: {
+        width: 80,
+        height: 80,
+        position: 'absolute',
+        right: 0,
+        bottom: 0,
+        borderWidth: 0.5,
+        backgroundColor: '#DCDCDC',
     },
 });
 
