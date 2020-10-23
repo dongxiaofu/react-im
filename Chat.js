@@ -180,7 +180,37 @@ export default class Chat extends Component {
             <SafeAreaView style={styles.container}>
                 <FlatList
                     data={MESSAGES}
-                    renderItem={Item}
+                    renderItem={({item, index}) => {
+                        if (index % 2 == 0) {
+                            return (
+                                <View style={styles.container}>
+                                    <Image
+                                        source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                                        style={styles.thumbnail}
+                                    />
+                                    <View style={styles.rightContainer}>
+                                        <Text style={styles.name}>{item.id}小王</Text>
+                                        <Text
+                                            style={styles.message}>需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
+                                    </View>
+                                </View>
+                            );
+                        }
+                        return (
+                            <View style={myself_styles.container}>
+
+                                <View style={myself_styles.rightContainer}>
+                                    <Text style={myself_styles.name}>小王2</Text>
+                                    <Text
+                                        style={myself_styles.message}>4444需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
+                                </View>
+                                <Image
+                                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                                    style={myself_styles.thumbnail}
+                                />
+                            </View>
+                        );
+                    }}
                     keyExtractor={item => item.id}
                 />
                 <View style={{
@@ -228,7 +258,6 @@ export default class Chat extends Component {
     };
 }
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -241,9 +270,14 @@ const styles = StyleSheet.create({
     },
     rightContainer: {
         flex: 1,
-        marginLeft: 20,
-        borderBottomWidth: 1,
-        backgroundColor: '#5bf812',
+        marginLeft: 10,
+        marginRight:70,
+        // borderBottomWidth: 1,
+        backgroundColor: 'white',
+        marginTop:10,
+        marginBottom:10,
+        borderRadius:5,
+        padding:10,
     },
     title: {
         fontSize: 20,
@@ -259,14 +293,73 @@ const styles = StyleSheet.create({
         right: 15,
     },
     thumbnail: {
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
+        borderRadius:5,
     },
     list: {
         paddingTop: 20,
         backgroundColor: '#F5FCFF',
     },
+    _input: {
+        height: 40,
+        width: width * 0.8,
+        backgroundColor: '#F5FCFF',
+        marginTop: 10,
+        marginBottom: 10,
+        marginLeft: 5,
+        marginRight: 50,
+        /*  alignSelf:'center',*/
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 2,
+        fontSize: 20,
+    },
+});
 
+const myself_styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        backgroundColor: '#F5F5F5',
+        paddingTop: 10,
+        // paddingBottom: 20,
+    },
+    rightContainer: {
+        flex: 1,
+        marginRight: 10,
+        // borderBottomWidth: 1,
+        backgroundColor: '#5bf812',
+        marginLeft:70,
+        marginTop:10,
+        marginBottom:10,
+        borderRadius:5,
+        padding:10,
+    },
+    title: {
+        fontSize: 20,
+        marginBottom: 8,
+        textAlign: 'right',
+    },
+    year: {
+        textAlign: 'left',
+    },
+    date: {
+        position: 'absolute',
+        top: 10,
+        right: 15,
+    },
+    thumbnail: {
+        width: 50,
+        height: 50,
+        borderRadius:5,
+    },
+    list: {
+        paddingTop: 20,
+        backgroundColor: '#F5FCFF',
+    },
     _input: {
         height: 40,
         width: width * 0.8,
