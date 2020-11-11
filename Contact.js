@@ -21,6 +21,7 @@ import {Actions} from 'react-native-router-flux';
 import * as InteractionManager from 'react-native';
 
 const {height, width} = Dimensions.get('window');
+const frontendColor = '#efebeb';
 
 type Props = {};
 export default class Contact extends Component<Props> {
@@ -233,7 +234,10 @@ export default class Contact extends Component<Props> {
         let idName = contact.idName;
         let contactItem = contact.contact
         const Item = ({item}) => (
-            <TouchableHighlight onPress={() => this._pressRow(item.id)}>
+            <TouchableHighlight
+                onPress={() => this._pressRow(item.id)}
+                underlayColor={frontendColor}
+            >
                 <View style={contacts.container}>
                     <Image
                         source={{uri: item.thumbnailPath}}
@@ -322,6 +326,7 @@ export default class Contact extends Component<Props> {
                 <View style={category.list}>
                     <TouchableHighlight
                         onPress={() => this.scrollToAnchor('A', true)}
+                        underlayColor={frontendColor}
                     >
                         <Text style={category.listItem}>A</Text>
                     </TouchableHighlight>

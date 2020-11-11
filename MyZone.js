@@ -24,6 +24,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/FontAwesome';
 
 const {height, width} = Dimensions.get('window');
+const frontendColor = '#efebeb';
 type Props = {
     current: number;
     count: number;
@@ -185,7 +186,10 @@ export default class MyZone extends Component {
         const ZONEBACKGROUD = {image: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'};
 
         const renderABlog = ({item}) => (
-            <TouchableHighlight onPress={() => this._pressRow(item.id)}>
+            <TouchableHighlight
+                onPress={() => this._pressRow(item.id)}
+                underlayColor={frontendColor}
+            >
                 <View style={blog.container}>
                     <View style={blog.postTime}>
                         <Text style={blog.day}>{item.day}</Text>

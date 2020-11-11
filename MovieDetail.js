@@ -8,21 +8,15 @@ import {
     StyleSheet,
     TextInput,
     Dimensions,
-    StatusBar,
-    Button,
     TouchableHighlight,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Component, useState} from 'react';
-import {StackActions as navigation} from '@react-navigation/routers/src/StackRouter';
+import {Component} from 'react';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Actions} from 'react-native-router-flux';
 
 const {height, width} = Dimensions.get('window');
-// var {width,height} = Dimensions.get('window');
+const frontendColor = '#efebeb';
 
 type Props = {
     current: number;
@@ -54,22 +48,6 @@ export default class MovieDetail extends Component {
                     <Text style={styles.name}>{item.id}小王</Text>
                     <Text
                         style={styles.message}>需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
-                </View>
-            </View>
-        );
-    }
-
-    renderReverseItem({item}) {
-        return (
-            <View style={styles.container}>
-                <Image
-                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
-                    style={styles.thumbnail}
-                />
-                <View style={styles.rightContainer}>
-                    <Text style={styles.name}>小王2</Text>
-                    <Text
-                        style={styles.message}>4444需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
                 </View>
             </View>
         );
@@ -171,7 +149,10 @@ export default class MovieDetail extends Component {
                                     <Text
                                         style={myself_styles.message}>4444需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
                                 </View>
-                                <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
+                                <TouchableHighlight
+                                    onPress={() => this._pressRow({id: item.id})}
+                                    underlayColor={frontendColor}
+                                >
                                 <Image
                                     source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
                                     style={myself_styles.thumbnail}
@@ -186,7 +167,7 @@ export default class MovieDetail extends Component {
                     }}
 
                     keyExtractor={item => item.id}
-                />
+                />);
                 <View style={{
                     position: 'absolute',
                     width: width,

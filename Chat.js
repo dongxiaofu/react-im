@@ -24,7 +24,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 
 const {height, width} = Dimensions.get('window');
-// var {width,height} = Dimensions.get('window');
+const frontendColor = '#efebeb';
 
 type Props = {
     current: number;
@@ -184,7 +184,10 @@ export default class Chat extends Component {
                         if (index % 2 == 0) {
                             return (
                                 <View style={styles.container}>
-                                    <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
+                                    <TouchableHighlight
+                                        onPress={() => this._pressRow({id: item.id})}
+                                        underlayColor={frontendColor}
+                                    >
                                     <Image
                                         source={{uri: 'http://boss.chugang.net/static/Chat/avatar2.jpeg'}}
                                         style={styles.thumbnail}
@@ -206,7 +209,10 @@ export default class Chat extends Component {
                                     <Text
                                         style={myself_styles.message}>4444需求：由主页MainScreen跳转到站内信页面MessageScreen，在MessageScreen存在自定义的TitleBar和3个Tab布局。</Text>
                                 </View>
-                                <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
+                                <TouchableHighlight
+                                    onPress={() => this._pressRow({id: item.id})}
+                                    underlayColor={frontendColor}
+                                >
                                 <Image
                                     source={{uri: 'http://boss.chugang.net/static/Chat/avatar1.jpeg'}}
                                     style={myself_styles.thumbnail}

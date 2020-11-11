@@ -21,6 +21,7 @@ import {Actions} from 'react-native-router-flux';
 import MovieDetail from './MovieDetail';
 
 const {height, width} = Dimensions.get('window');
+const frontendColor = '#efebeb';
 
 type Props = {
     current: number;
@@ -86,7 +87,10 @@ export default class BlogDetail extends Component {
 
         const renderComment = ({item}) => (
             <View style={Comment.container}>
-                <TouchableHighlight onPress={() => this.goUserHome(3)}>
+                <TouchableHighlight
+                    onPress={() => this.goUserHome(3)}
+                    underlayColor={frontendColor}
+                >
                     <Image
                         style={Comment.avatar}
                         source={{uri: 'https://img2.woyaogexing.com/2020/10/14/85789848287243ae9234db7527d166a7!400x400.jpeg'}}
