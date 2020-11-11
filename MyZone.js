@@ -49,10 +49,10 @@ export default class MyZone extends Component {
 
     _header() {
         // const ZONEBACKGROUD = {image: 'https://img.tupianzj.com/uploads/allimg/201019/30-201019143129.jpg'};
-        const ZONEBACKGROUD = {image: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'};
+        const ZONEBACKGROUD = {image: 'https://img.ivsky.com/img/tupian/pre/202004/22/shuiyuanhuacheng-005.jpg'};
 
         const USER = {
-            thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+            thumbnail: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3398160483,1413537028&fm=26&gp=0.jpg',
             motto: '敢犯强汉者，虽远必诛！',
             name: '刘彻',
         };
@@ -80,7 +80,7 @@ export default class MyZone extends Component {
 
     render() {
         const USER = {
-            thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+            thumbnail: 'https://img.ivsky.com/img/tupian/pre/202004/22/shuiyuanhuacheng-007.jpg',
             motto: '敢犯强汉者，虽远必诛！',
             name: '刘彻',
         };
@@ -91,7 +91,7 @@ export default class MyZone extends Component {
                 month: '9',
                 day: '19',
                 posters: {
-                    thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                    thumbnail: 'https://img.ivsky.com/img/tupian/pre/202004/22/shuiyuanhuacheng-007.jpg',
                     content: '据报道，巴基斯坦电信管理局（PTA）在19日的声明中称：“在TikTok管理层保证将封禁所有多次传播淫秽和不道德信息的账' +
                         '户后，TikTok已被解封。”据报道，巴基斯坦电信当局10月9日曾表示，由于TikTok上有“不道德”和“不雅”内容的投诉，他们将禁' +
                         '止TikTok在巴基斯坦的下载和使用。此举遭到了巴基斯坦社会和巴议会的强烈反对，巴基斯坦参议院立法委员会10月12日批评了巴' +
@@ -107,7 +107,7 @@ export default class MyZone extends Component {
                 month: '9',
                 day: '19',
                 posters: {
-                    thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                    thumbnail: 'https://img.ivsky.com/img/tupian/pre/202004/22/shuiyuanhuacheng-007.jpg',
                     content: '据报道，巴基斯坦电信管理局（PTA）在19日的声明中称：“在TikTok管理层保证将封禁所有多次传播淫秽和不道德信息的账' +
                         '户后，TikTok已被解封。”据报道，巴基斯坦电信当局10月9日曾表示，由于TikTok上有“不道德”和“不雅”内容的投诉，他们将禁' +
                         '止TikTok在巴基斯坦的下载和使用。此举遭到了巴基斯坦社会和巴议会的强烈反对，巴基斯坦参议院立法委员会10月12日批评了巴' +
@@ -123,7 +123,7 @@ export default class MyZone extends Component {
                 month: '9',
                 day: '19',
                 posters: {
-                    thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                    thumbnail: 'https://img.ivsky.com/img/tupian/pre/202004/22/shuiyuanhuacheng-007.jpg',
                     content: '据报道，巴基斯坦电信管理局（PTA）在19日的声明中称：“在TikTok管理层保证将封禁所有多次传播淫秽和不道德信息的账' +
                         '户后，TikTok已被解封。”据报道，巴基斯坦电信当局10月9日曾表示，由于TikTok上有“不道德”和“不雅”内容的投诉，他们将禁' +
                         '止TikTok在巴基斯坦的下载和使用。此举遭到了巴基斯坦社会和巴议会的强烈反对，巴基斯坦参议院立法委员会10月12日批评了巴' +

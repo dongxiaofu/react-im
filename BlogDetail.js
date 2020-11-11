@@ -89,7 +89,7 @@ export default class BlogDetail extends Component {
                 <TouchableHighlight onPress={() => this.goUserHome(3)}>
                     <Image
                         style={Comment.avatar}
-                        source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                        source={{uri: 'https://img2.woyaogexing.com/2020/10/14/85789848287243ae9234db7527d166a7!400x400.jpeg'}}
                     />
                 </TouchableHighlight>
                 <View style={Comment.content_container}>

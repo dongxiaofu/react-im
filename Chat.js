@@ -186,7 +186,7 @@ export default class Chat extends Component {
                                 <View style={styles.container}>
                                     <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
                                     <Image
-                                        source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                                        source={{uri: 'http://boss.chugang.net/static/Chat/avatar2.jpeg'}}
                                         style={styles.thumbnail}
                                     />
                                     </TouchableHighlight>
@@ -208,7 +208,7 @@ export default class Chat extends Component {
                                 </View>
                                 <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
                                 <Image
-                                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                                    source={{uri: 'http://boss.chugang.net/static/Chat/avatar1.jpeg'}}
                                     style={myself_styles.thumbnail}
                                 />
                                 </TouchableHighlight>

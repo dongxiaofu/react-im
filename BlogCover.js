@@ -61,9 +61,9 @@ export default class recommend extends Component {
 
     renderSwiperItemView() {
         const imgs = [
-            'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+            'https://img.tupianzj.com/uploads/allimg/190109/22-1Z109100532-51.jpg',
             'http://pic1.win4000.com/pic/8/00/5a3116741f.jpg',
-            'http://img.08087.cc/uploads/20191221/19/1576927577-ezdtLhXcng.jpg',
+            'https://img.tupianzj.com/uploads/allimg/201110/30-201110144110.jpg',
         ];
         return imgs.map((item, i) => {
             return (
@@ -77,7 +77,7 @@ export default class recommend extends Component {
                         style={{
                             width: width,
                             height: height,
-                            resizeMode: 'contain',
+                            resizeMode: 'cover',
                         }}
                         source={{
                             uri: item,
@@ -112,7 +112,7 @@ export default class recommend extends Component {
                     <View>
                         <TouchableHighlight onPress={() => this.goDetail()}>
                         <View>
-                            <Text style={wapper.comment_num}>29</Text>
+                            <Text style={wapper.comment_num}>评论</Text>
                         </View>
                         </TouchableHighlight>
                     </View>

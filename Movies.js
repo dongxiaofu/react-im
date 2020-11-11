@@ -66,28 +66,28 @@ export default class Movies extends Component {
                 title: '订阅号消息',
                 year: '小明撤回了一个群待办',
                 date: '10月16日',
-                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+                posters: {thumbnail: 'http://boss.chugang.net/static/Chat/avatar1.jpeg'},
             },
             {
                 id: '2',
                 title: 'Web开发',
                 year: '疫情之下的众生相',
                 date: '10月17日',
-                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+                posters: {thumbnail: 'http://boss.chugang.net/static/Chat/avatar2.jpeg'},
             },
             {
                 id: '3',
                 title: '订阅号消息',
                 year: '小明撤回了一个群待办',
                 date: '18:19',
-                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+                posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/30/5f773a8acc1c460da029bd8690f19785!400x400.jpeg'},
             },
             {
                 id: '4',
                 title: 'Web开发',
                 year: '疫情之下的众生相',
                 date: '昨天',
-                posters: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+                posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/14/bef96747cb564b84866ccfa1204db395!400x400.jpeg'},
             },
         ];
 

@@ -64,7 +64,7 @@ export default class UserHome extends PureComponent {
             name: 'Web开发',
             ID: 'gganghong',
             area: '阿拉伯联合酋长国 乌姆盖万',
-            avatar: {thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'},
+            avatar: {thumbnail: 'http://boss.chugang.net/static/Chat/avatar2.jpeg'},
         };
 
         let userId = USER.uerId;
@@ -72,16 +72,16 @@ export default class UserHome extends PureComponent {
         const ALBUMS = [
             {
                 id: '1',
-                thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                thumbnail: 'https://img.ivsky.com/img/tupian/pre/202004/11/pubu-001.jpg',
             }, {
                 id: '2',
-                thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                thumbnail: 'https://img.ivsky.com/img/tupian/pre/202004/11/pubu-002.jpg',
             }, {
                 id: '3',
-                thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                thumbnail: 'https://img.ivsky.com/img/tupian/pre/202004/11/pubu-003.jpg',
             }, {
                 id: '4',
-                thumbnail: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg',
+                thumbnail: 'https://img.ivsky.com/img/tupian/pre/202004/11/pubu-004.jpg',
             },
         ];
 
