@@ -127,9 +127,12 @@ export default class MovieDetail extends Component {
                         if (index % 2 == 0) {
                             return (
                                 <View style={styles.container}>
-                                    <TouchableHighlight onPress={() => this._pressRow({id: item.id})}>
+                                    <TouchableHighlight
+                                        onPress={() => this._pressRow({id: item.id})}
+                                        underlayColor={frontendColor}
+                                    >
                                     <Image
-                                        source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                                        source={{uri: 'https://img2.woyaogexing.com/2020/10/05/0ee54d2e2d1b46598c245cbc94b30243!400x400.jpeg'}}
                                         style={styles.thumbnail}
                                     />
                                     </TouchableHighlight>
@@ -154,7 +157,7 @@ export default class MovieDetail extends Component {
                                     underlayColor={frontendColor}
                                 >
                                 <Image
-                                    source={{uri: 'http://img.08087.cc/uploads/20190819/11/1566184829-kXRzaQOrIV.jpg'}}
+                                    source={{uri: 'https://img2.woyaogexing.com/2020/10/06/81b74a10a54c46abad487b767bfd9fd9!400x400.jpeg'}}
                                     style={myself_styles.thumbnail}
                                 />
                                 </TouchableHighlight>
@@ -167,7 +170,7 @@ export default class MovieDetail extends Component {
                     }}
 
                     keyExtractor={item => item.id}
-                />);
+                />
                 <View style={{
                     position: 'absolute',
                     width: width,
