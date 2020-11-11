@@ -21,6 +21,8 @@ import Movies from './Movies';
 import MovieDetail from './MovieDetail';
 import {Actions} from 'react-native-router-flux';
 import Contact from './Contact';
+import Login from "./Login";
+import Register from "./Register";
 
 
 // const Stack = createStackNavigator;
@@ -86,20 +88,29 @@ class Home extends Component {
     }
 
     Register({}) {
+        // return (
+        //     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        //         <Text>Settings!</Text>
+        //         <Button title="Go to Register" onPress={() => Actions.register()}/>
+        //     </View>
+        // );
+
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>Settings!</Text>
-                <Button title="Go to Register" onPress={() => Actions.register()}/>
-            </View>
+            <Register />
         );
     }
 
     Login({}) {
+        // 经中间页跳转到登录页面
+        // return (
+        //     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        //         <Text>Settings!</Text>
+        //         <Button title="Go to Login" onPress={() => Actions.login()}/>
+        //     </View>
+        // );
+
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>Settings!</Text>
-                <Button title="Go to Login" onPress={() => Actions.login()}/>
-            </View>
+            <Login />
         );
     }
 
@@ -136,13 +147,12 @@ class Home extends Component {
 
     render() {
         const Tab = createBottomTabNavigator();
-        const Stack = createStackNavigator();
         return (
             <Tab.Navigator>
-                <Tab.Screen name="Home" options={{title: 'Overview'}} component={this.HomeScreen}/>
-                <Tab.Screen name="Login" component={this.Login}/>
-                <Tab.Screen name="Register" component={this.Register}/>
-                <Tab.Screen name="Contact" component={this.renderContact}/>
+                <Tab.Screen name="Home" options={{title: '微信',fontSize: 30, color: 'red',}} component={this.HomeScreen}/>
+                <Tab.Screen name="Contact" options={{title: '通讯录'}} component={this.renderContact}/>
+                <Tab.Screen name="Login"  options={{title: '登录'}} component={this.Login}/>
+                <Tab.Screen name="Register"  options={{title: '注册'}} component={this.Register}/>
                 {/*<Stack.Screen name="Movie" component={MovieDetail} />*/}
                 {/*<Tab.Screen name="Root" component={this.Other} />*/}
             </Tab.Navigator>
