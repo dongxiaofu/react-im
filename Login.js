@@ -55,7 +55,7 @@ export default class Login extends Component {
                     <Text style={styles.title}>手机号登录</Text>
                 </View>
                 <View style={styles.form}>
-                    <View style={styles.form_line}>
+                    <View style={styles.form_line_no_border}>
                         <Text style={styles.label}>账号</Text>
                         <TextInput
                             style={styles.ipt}
@@ -63,7 +63,7 @@ export default class Login extends Component {
                             placeholder={'请填写手机号'}
                         />
                     </View>
-                    <View style={styles.form_line}>
+                    <View style={styles.form_line_no_border}>
                         <Text style={styles.label}>密码</Text>
                         <TextInput
                             style={styles.ipt}
@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
         height: 40,
         width: width * 0.2,
 
-        borderColor: 'gray',
-        borderWidth: 1,
+        // borderColor: 'gray',
+        // borderWidth: 1,
         textAlignVertical: 'center',
 
         fontSize: 16,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 40,
         // width: width * 0.6,
-        borderColor: 'blue',
+        borderColor: 'gray',
         borderWidth: 1,
 
         fontSize: 16,

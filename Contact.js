@@ -384,7 +384,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     categoryContainer: {
-        backgroundColor: 'grey',
+        backgroundColor: '#a1a3a6',
+        // opacity:0.3,
         width: width,
         marginTop: 15,
         // marginBottom: 15,
@@ -396,7 +397,8 @@ const styles = StyleSheet.create({
     },
     username: {
         flex: 1,
-        borderBottomWidth: 0.5,
+        borderBottomWidth: 0.2,
+        borderColor: 'grey',
         marginLeft: 10,
         textAlignVertical: 'center',
         fontSize: 16,

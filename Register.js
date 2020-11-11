@@ -95,7 +95,7 @@ export default class Register extends Component {
                     <Text style={styles.title}>手机号注册</Text>
                 </View>
                 <View style={styles.form}>
-                    <View style={styles.form_line}>
+                    <View style={styles.form_line_no_border}>
                         <View style={styles.nickname}>
                             <View>
                                 <Text style={styles.label}>昵称</Text>
@@ -145,7 +145,7 @@ export default class Register extends Component {
                         <Text style={styles.label}>国家/地区</Text>
                         <Text style={styles.country}>中国大陆（+86）</Text>
                     </View>
-                    <View style={styles.form_line}>
+                    <View style={styles.form_line_no_border}>
                         <Text style={styles.label}>手机号</Text>
                         <TextInput
                             style={styles.ipt}
@@ -153,7 +153,7 @@ export default class Register extends Component {
                             placeholder={'请填写手机号'}
                         />
                     </View>
-                    <View style={styles.form_line}>
+                    <View style={styles.form_line_no_border}>
                         <Text style={styles.label}>密码</Text>
                         <TextInput
                             style={styles.ipt}
@@ -210,16 +210,16 @@ const styles = StyleSheet.create({
     nickname: {
         width: width * 0.7,
         flexDirection: 'row',
-        borderColor: 'red',
-        borderWidth: 1,
+        // borderColor: 'red',
+        // borderWidth: 1,
     },
     label: {
         marginRight: 10,
         height: 40,
         width: width * 0.2,
 
-        borderColor: 'gray',
-        borderWidth: 1,
+        // borderColor: 'gray',
+        // borderWidth: 1,
         textAlignVertical: 'center',
 
         fontSize: 16,

@@ -89,6 +89,64 @@ export default class Movies extends Component {
                 date: '昨天',
                 posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/14/bef96747cb564b84866ccfa1204db395!400x400.jpeg'},
             },
+
+            {
+                id: '1',
+                title: '订阅号消息',
+                year: '小明撤回了一个群待办',
+                date: '10月16日',
+                posters: {thumbnail: 'http://boss.chugang.net/static/Chat/avatar1.jpeg'},
+            },
+            {
+                id: '5',
+                title: 'Web开发',
+                year: '疫情之下的众生相',
+                date: '10月17日',
+                posters: {thumbnail: 'http://boss.chugang.net/static/Chat/avatar2.jpeg'},
+            },
+            {
+                id: '6',
+                title: '订阅号消息',
+                year: '小明撤回了一个群待办',
+                date: '18:19',
+                posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/30/5f773a8acc1c460da029bd8690f19785!400x400.jpeg'},
+            },
+            {
+                id: '7',
+                title: 'Web开发',
+                year: '疫情之下的众生相',
+                date: '昨天',
+                posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/14/bef96747cb564b84866ccfa1204db395!400x400.jpeg'},
+            },
+
+            {
+                id: '8',
+                title: '订阅号消息',
+                year: '小明撤回了一个群待办',
+                date: '10月16日',
+                posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/05/b11afe599aa94016aefb928db80d9b8c!400x400.jpeg'},
+            },
+            {
+                id: '9',
+                title: 'Web开发',
+                year: '疫情之下的众生相',
+                date: '10月17日',
+                posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/05/8753de8de66542b99f6982b1b37a5be7!400x400.jpeg'},
+            },
+            {
+                id: '10',
+                title: '订阅号消息',
+                year: '小明撤回了一个群待办',
+                date: '18:19',
+                posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/30/5f773a8acc1c460da029bd8690f19785!400x400.jpeg'},
+            },
+            {
+                id: '11',
+                title: 'Web开发',
+                year: '疫情之下的众生相',
+                date: '昨天',
+                posters: {thumbnail: 'https://img2.woyaogexing.com/2020/10/14/bef96747cb564b84866ccfa1204db395!400x400.jpeg'},
+            },
         ];
 
         const Item = ({item}) => (
@@ -134,15 +192,18 @@ const styles = StyleSheet.create({
     rightContainer: {
         flex: 1,
         marginLeft: 20,
-        borderBottomWidth: 1,
+        borderBottomWidth: 0.2,
+        // borderColor:'gray',
     },
     title: {
-        fontSize: 20,
+        fontSize: 18,
         marginBottom: 8,
         textAlign: 'left',
     },
     year: {
         textAlign: 'left',
+        fontSize: 13,
+        color:'grey',
     },
     date: {
         position: 'absolute',
